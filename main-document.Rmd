@@ -78,12 +78,14 @@ write.csv(BRFSS_all, file = "brfss_all_wt.csv")
 
 Questions only asked of males:
 
-IMQ070
+IMQ070 (2015)
 
 Questions only asked of females:
 
-IMQ060
-IMD080
+IMQ060 (2015)
+IMD080 (2015)
 
-Variables classified differently for 
+Variables classified based on sex: 
+
+_DRNKWK1 (all years)
 
