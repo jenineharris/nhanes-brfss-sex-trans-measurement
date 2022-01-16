@@ -1,6 +1,6 @@
 ---
 title: "Measurement of sex and gender identity in NHANES"
-author: "Jenine K Harris"
+author: "Jenine K Harris, Odalis Hernandez"
 date: "9/15/2021"
 output: word_document
 ---
