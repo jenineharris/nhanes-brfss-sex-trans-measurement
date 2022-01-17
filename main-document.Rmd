@@ -39,8 +39,12 @@ BRFSS_2018 <- read_xpt(file = temp)
 temp <- tempfile(fileext = ".zip")
 download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
 BRFSS_2019 <- read_xpt(file = temp)
+```
+
+```{r}
 #
 # # select only the variables to use in the analysis (e.g. changes 300+ variables to only needed for analysis)
+
 #
 library(tidyverse)
  BRFSS_2015 <- BRFSS_2015 %>%
