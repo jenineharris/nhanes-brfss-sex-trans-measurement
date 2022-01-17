@@ -118,7 +118,7 @@ BRFSS_all_clean <- BRFSS_all %>%
                           "Yes, Transgender, female to male")) %>% 
    droplevels()
 # basic table exploring data
-table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX)
+table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX, year = BRFSS_all_clean$year)
 
 # library(table1)
 # 
