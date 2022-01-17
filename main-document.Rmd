@@ -108,9 +108,14 @@ BRFSS_all_clean <- BRFSS_all %>%
                                    '3' = 'Yes, Transgender, gender nonconforming',
                                    '4' = 'No',
                                    '7' = NA_character_,
-                                   '9' = NA_character_))
+                                   '9' = NA_character_)) %>% 
+   filter(TRNSGNDR != "No") %>% 
+   droplevels()
 # basic table exploring data
-table(BRFSS_all_clean$TRNSGNDR, BRFSS_all_clean$SEX)
+table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX)
+prop.table(table(trans = BRFSS_all_clean$TRNSGNDR, 
+                 sex = BRFSS_all_clean$SEX),
+           margin = 1)
 ```
 
 
