@@ -82,13 +82,37 @@ library(tidyverse)
 BRFSS_2019 <- BRFSS_2019 %>%
   rename(`_DRNKWEK` = `_DRNKWK1`)
 
+
+
 # # combine all years into 1 dataset
-BRFSS_all <- rbind(BRFSS_2015, BRFSS_2016, BRFSS_2017, BRFSS_2018, BRFSS_2019)
+BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR), 
+                   select(BRFSS_2016, SEX, TRNSGNDR),
+                   select(BRFSS_2017, SEX, TRNSGNDR),
+                   select(BRFSS_2018, SEX, TRNSGNDR),
+                   select(BRFSS_2019, SEX, TRNSGNDR))
 
 # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # in instead of running all steps above
-write.csv(BRFSS_all, file = "brfss_all_wt.csv")
+# write.csv(BRFSS_all, file = "brfss_all_wt.csv")
 ```
+
+```{r}
+# add labels
+BRFSS_all_clean <- BRFSS_all %>% 
+   mutate(SEX = recode_factor(SEX, 
+                              '1' = 'male',
+                              '2' = 'female')) %>% 
+   mutate(TRNSGNDR = recode_factor(TRNSGNDR,
+                                   '1' = 'Yes, Transgender, male-to-female',
+                                   '2' = 'Yes, Transgender, female to male',
+                                   '3' = 'Yes, Transgender, gender nonconforming',
+                                   '4' = 'No',
+                                   '7' = NA_character_,
+                                   '9' = NA_character_))
+# basic table exploring data
+table(BRFSS_all_clean$TRNSGNDR, BRFSS_all_clean$SEX)
+```
+
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | Question id | Question                                                                                                                                                                                     | Asked of... | Year(s)          |
