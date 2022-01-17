@@ -109,13 +109,14 @@ BRFSS_all_clean <- BRFSS_all %>%
                                    '4' = 'No',
                                    '7' = NA_character_,
                                    '9' = NA_character_)) %>% 
-   filter(TRNSGNDR != "No") %>% 
+   filter(TRNSGNDR %in% c("Yes, Transgender, male-to-female",
+                          "Yes, Transgender, female to male")) %>% 
    droplevels()
 # basic table exploring data
 table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX)
 prop.table(table(trans = BRFSS_all_clean$TRNSGNDR, 
                  sex = BRFSS_all_clean$SEX),
-           margin = 1)
+           margin = 2)
 ```
 
 
