@@ -52,25 +52,30 @@ library(tidyverse)
           PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
           HPLSTTST, HADHYST2, PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, 
           PCPSARE1, PSATEST1, PSATIME, PCPSARS1, PCPSADE1, PCDMDECN,
-          `_DRNKWEK`)
+          `_DRNKWEK`) %>% 
+    mutate(year = "2015")
 #
  BRFSS_2016 <- BRFSS_2016 %>%
    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, HADMAM,
           HOWLONG, HADPAP2, LASTPAP2, HPVTEST, HPLSTTST, HADHYST2,
           PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, PCPSARE1, PSATEST1,
           PSATIME, PCPSARS1, PCPSADE1, PCDMDECN, `_RFMAM2Y`, `_MAM5021`, 
-          `_RFPAP33`, `_RFPSA21`)
+          `_RFPAP33`, `_RFPSA21`)%>% 
+    mutate(year = "2016")
 #
  BRFSS_2017 <- BRFSS_2017 %>%
    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, PFPPRVN2,
-          TYPCNTR7, NOBCUSE6)
+          TYPCNTR7, NOBCUSE6)%>% 
+    mutate(year = "2017")
 #
  BRFSS_2018 <- BRFSS_2018 %>%
-  select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)
+  select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)%>% 
+    mutate(year = "2018")
 #
  BRFSS_2019 <- BRFSS_2019 %>%
    select(`_MICHD`, `_SEX`, EDUCA, `_BMI5CAT`, `_DRNKWK1`, EXERANY2, `_RACE`,
-          `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)
+          `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>% 
+    mutate(year = "2019")
 #
 # # renamed SEX1 in 2018 to SEX like all the other years
  BRFSS_2018 <- BRFSS_2018 %>%
@@ -85,11 +90,11 @@ BRFSS_2019 <- BRFSS_2019 %>%
 
 
 # # combine all years into 1 dataset
-BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR), 
-                   select(BRFSS_2016, SEX, TRNSGNDR),
-                   select(BRFSS_2017, SEX, TRNSGNDR),
-                   select(BRFSS_2018, SEX, TRNSGNDR),
-                   select(BRFSS_2019, SEX, TRNSGNDR))
+BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year), 
+                   select(BRFSS_2016, SEX, TRNSGNDR, year),
+                   select(BRFSS_2017, SEX, TRNSGNDR, year),
+                   select(BRFSS_2018, SEX, TRNSGNDR, year),
+                   select(BRFSS_2019, SEX, TRNSGNDR, year))
 
 # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # in instead of running all steps above
@@ -114,6 +119,11 @@ BRFSS_all_clean <- BRFSS_all %>%
    droplevels()
 # basic table exploring data
 table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX)
+
+# library(table1)
+# 
+# table1(~ year | SEX * TRNSGNDR, data = BRFSS_all_clean)
+
 prop.table(table(trans = BRFSS_all_clean$TRNSGNDR, 
                  sex = BRFSS_all_clean$SEX),
            margin = 2)
