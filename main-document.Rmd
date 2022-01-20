@@ -12,38 +12,38 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r}
 # TO CREATE ANALYTIC DATA SET, UNCOMMENT AND RUN THIS CODE CHUNK
 # bring in files from online BRFSS 2015 to 2018 data
-# library(haven)
-# # #
-# # #
-# # # # 2015 data
-#   temp <- tempfile(fileext = ".zip")
-#   download.file(url  = "https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip", destfile = temp)
-#   BRFSS_2015 <- read_xpt(file = temp)
-# # #
-# # # 2016 data
-#  temp <- tempfile(fileext = ".zip")
-#  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2016/files/LLCP2016XPT.zip", destfile = temp)
-#  BRFSS_2016 <- read_xpt(file = temp)
+library(haven)
 # #
-# # # 2017 data
-#  temp <- tempfile(fileext = ".zip")
-#  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2017/files/LLCP2017XPT.zip", destfile = temp)
-#  BRFSS_2017 <- read_xpt(file = temp)
 # #
-# # 2018 data
-# temp <- tempfile(fileext = ".zip")
-# download.file(url  = "https://www.cdc.gov/brfss/annual_data/2018/files/LLCP2018XPT.zip", destfile = temp)
-# BRFSS_2018 <- read_xpt(file = temp)
-# 
-# # 2019 data
-# temp <- tempfile(fileext = ".zip")
-# download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
-# BRFSS_2019 <- read_xpt(file = temp)
-# 
-# # 2020 data
-# temp <- tempfile(fileext = ".zip")
-# download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020XPT.zip", destfile = temp)
-# BRFSS_2020 <- read_xpt(file = temp)
+# # # 2015 data
+  temp <- tempfile(fileext = ".zip")
+  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip", destfile = temp)
+  BRFSS_2015 <- read_xpt(file = temp)
+# #
+# # 2016 data
+ temp <- tempfile(fileext = ".zip")
+ download.file(url  = "https://www.cdc.gov/brfss/annual_data/2016/files/LLCP2016XPT.zip", destfile = temp)
+ BRFSS_2016 <- read_xpt(file = temp)
+#
+# # 2017 data
+ temp <- tempfile(fileext = ".zip")
+ download.file(url  = "https://www.cdc.gov/brfss/annual_data/2017/files/LLCP2017XPT.zip", destfile = temp)
+ BRFSS_2017 <- read_xpt(file = temp)
+#
+# 2018 data
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2018/files/LLCP2018XPT.zip", destfile = temp)
+BRFSS_2018 <- read_xpt(file = temp)
+
+# 2019 data
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
+BRFSS_2019 <- read_xpt(file = temp)
+
+# 2020 data
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020XPT.zip", destfile = temp)
+BRFSS_2020 <- read_xpt(file = temp)
 ```
 
 ```{r}
@@ -52,62 +52,62 @@ knitr::opts_chunk$set(echo = FALSE)
 
 #
 library(tidyverse)
-#  BRFSS_2015 <- BRFSS_2015 %>%
-#    select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
-#           PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
-#           HPLSTTST, HADHYST2, PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, 
-#           PCPSARE1, PSATEST1, PSATIME, PCPSARS1, PCPSADE1, PCDMDECN,
-#           `_DRNKWEK`) %>% 
-#     mutate(year = "2015")
-# #
-#  BRFSS_2016 <- BRFSS_2016 %>%
-#    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, HADMAM,
-#           HOWLONG, HADPAP2, LASTPAP2, HPVTEST, HPLSTTST, HADHYST2,
-#           PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, PCPSARE1, PSATEST1,
-#           PSATIME, PCPSARS1, PCPSADE1, PCDMDECN, `_RFMAM2Y`, `_MAM5021`, 
-#           `_RFPAP33`, `_RFPSA21`)%>% 
-#     mutate(year = "2016")
-# #
-#  BRFSS_2017 <- BRFSS_2017 %>%
-#    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, PFPPRVN2,
-#           TYPCNTR7, NOBCUSE6)%>% 
-#     mutate(year = "2017")
-# #
-#  BRFSS_2018 <- BRFSS_2018 %>%
-#   select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)%>% 
-#     mutate(year = "2018")
-# #
-#  BRFSS_2019 <- BRFSS_2019 %>%
-#    select(`_MICHD`, `_SEX`, EDUCA, `_BMI5CAT`, `_DRNKWK1`, EXERANY2, `_RACE`,
-#           `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>% 
-#     mutate(year = "2019")
-#  
-#  BRFSS_2020 <- BRFSS_2020 %>% 
-#     mutate(year = "2020") %>%
-#     rename(SEX = `_SEX`)
-# #
-# # # renamed SEX1 in 2018 to SEX like all the other years
-#  BRFSS_2018 <- BRFSS_2018 %>%
-#    rename(SEX = SEX1)
-#  BRFSS_2019 <- BRFSS_2019 %>%
-#    rename(SEX = `_SEX`)
-# #
-#  # renamed AVEDRNK3 to AVEDRNK2 in 2019 like all the other years
-# BRFSS_2019 <- BRFSS_2019 %>%
-#   rename(`_DRNKWEK` = `_DRNKWK1`)
-# 
-# 
-# 
-# # # combine all years into 1 dataset
-# BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year), 
-#                    select(BRFSS_2016, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2017, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2018, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2019, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2020, SEX, TRNSGNDR, year))
-# 
-# # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
-# # in instead of running all steps above
+ BRFSS_2015 <- BRFSS_2015 %>%
+   select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
+          PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
+          HPLSTTST, HADHYST2, PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1,
+          PCPSARE1, PSATEST1, PSATIME, PCPSARS1, PCPSADE1, PCDMDECN,
+          `_DRNKWEK`) %>%
+    mutate(year = "2015")
+#
+ BRFSS_2016 <- BRFSS_2016 %>%
+   select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, HADMAM,
+          HOWLONG, HADPAP2, LASTPAP2, HPVTEST, HPLSTTST, HADHYST2,
+          PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, PCPSARE1, PSATEST1,
+          PSATIME, PCPSARS1, PCPSADE1, PCDMDECN, `_RFMAM2Y`, `_MAM5021`,
+          `_RFPAP33`, `_RFPSA21`)%>%
+    mutate(year = "2016")
+#
+ BRFSS_2017 <- BRFSS_2017 %>%
+   select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, PFPPRVN2,
+          TYPCNTR7, NOBCUSE6)%>%
+    mutate(year = "2017")
+#
+ BRFSS_2018 <- BRFSS_2018 %>%
+  select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)%>%
+    mutate(year = "2018")
+#
+ BRFSS_2019 <- BRFSS_2019 %>%
+   select(`_MICHD`, `_SEX`, EDUCA, `_BMI5CAT`, `_DRNKWK1`, EXERANY2, `_RACE`,
+          `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>%
+    mutate(year = "2019")
+
+ BRFSS_2020 <- BRFSS_2020 %>%
+    mutate(year = "2020") %>%
+    rename(SEX = `_SEX`)
+#
+# # renamed SEX1 in 2018 to SEX like all the other years
+ BRFSS_2018 <- BRFSS_2018 %>%
+   rename(SEX = SEX1)
+ BRFSS_2019 <- BRFSS_2019 %>%
+   rename(SEX = `_SEX`)
+#
+ # renamed AVEDRNK3 to AVEDRNK2 in 2019 like all the other years
+BRFSS_2019 <- BRFSS_2019 %>%
+  rename(`_DRNKWEK` = `_DRNKWK1`)
+
+
+
+# # combine all years into 1 dataset
+BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
+                   select(BRFSS_2016, SEX, TRNSGNDR, year),
+                   select(BRFSS_2017, SEX, TRNSGNDR, year),
+                   select(BRFSS_2018, SEX, TRNSGNDR, year),
+                   select(BRFSS_2019, SEX, TRNSGNDR, year),
+                   select(BRFSS_2020, SEX, TRNSGNDR, year))
+
+# save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
+# in instead of running all steps above
 # write.csv(BRFSS_all, file = "brfss_all.csv")
 ```
 
