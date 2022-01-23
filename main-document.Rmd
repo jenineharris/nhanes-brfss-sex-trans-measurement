@@ -39,6 +39,11 @@ BRFSS_2018 <- read_xpt(file = temp)
 temp <- tempfile(fileext = ".zip")
 download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
 BRFSS_2019 <- read_xpt(file = temp)
+
+# 2020 data
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020XPT.zip", destfile = temp)
+BRFSS_2020 <- read_xpt(file = temp)
 ```
 
 ```{r}
@@ -50,32 +55,36 @@ library(tidyverse)
  BRFSS_2015 <- BRFSS_2015 %>%
    select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
           PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
-          HPLSTTST, HADHYST2, PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, 
+          HPLSTTST, HADHYST2, PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1,
           PCPSARE1, PSATEST1, PSATIME, PCPSARS1, PCPSADE1, PCDMDECN,
-          `_DRNKWEK`) %>% 
+          `_DRNKWEK`) %>%
     mutate(year = "2015")
 #
  BRFSS_2016 <- BRFSS_2016 %>%
    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, HADMAM,
           HOWLONG, HADPAP2, LASTPAP2, HPVTEST, HPLSTTST, HADHYST2,
           PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, PCPSARE1, PSATEST1,
-          PSATIME, PCPSARS1, PCPSADE1, PCDMDECN, `_RFMAM2Y`, `_MAM5021`, 
-          `_RFPAP33`, `_RFPSA21`)%>% 
+          PSATIME, PCPSARS1, PCPSADE1, PCDMDECN, `_RFMAM2Y`, `_MAM5021`,
+          `_RFPAP33`, `_RFPSA21`)%>%
     mutate(year = "2016")
 #
  BRFSS_2017 <- BRFSS_2017 %>%
    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, PFPPRVN2,
-          TYPCNTR7, NOBCUSE6)%>% 
+          TYPCNTR7, NOBCUSE6)%>%
     mutate(year = "2017")
 #
  BRFSS_2018 <- BRFSS_2018 %>%
-  select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)%>% 
+  select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)%>%
     mutate(year = "2018")
 #
  BRFSS_2019 <- BRFSS_2019 %>%
    select(`_MICHD`, `_SEX`, EDUCA, `_BMI5CAT`, `_DRNKWK1`, EXERANY2, `_RACE`,
-          `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>% 
+          `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>%
     mutate(year = "2019")
+
+ BRFSS_2020 <- BRFSS_2020 %>%
+    mutate(year = "2020") %>%
+    rename(SEX = `_SEX`)
 #
 # # renamed SEX1 in 2018 to SEX like all the other years
  BRFSS_2018 <- BRFSS_2018 %>%
@@ -89,19 +98,22 @@ BRFSS_2019 <- BRFSS_2019 %>%
 
 
 
-# # combine all years into 1 dataset  
-BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year), 
+
+# # combine all years into 1 dataset
+BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
                    select(BRFSS_2016, SEX, TRNSGNDR, year),
                    select(BRFSS_2017, SEX, TRNSGNDR, year),
                    select(BRFSS_2018, SEX, TRNSGNDR, year),
-                   select(BRFSS_2019, SEX, TRNSGNDR, year))
+                   select(BRFSS_2019, SEX, TRNSGNDR, year),
+                   select(BRFSS_2020, SEX, TRNSGNDR, year))
 
 # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # in instead of running all steps above
-# write.csv(BRFSS_all, file = "brfss_all_wt.csv")
+# write.csv(BRFSS_all, file = "brfss_all.csv")
 ```
 
 ```{r}
+BRFSS_all <- read.csv("brfss_all.csv")
 # add labels
 BRFSS_all_clean <- BRFSS_all %>% 
    mutate(SEX = recode_factor(SEX, 
@@ -128,6 +140,16 @@ prop.table(table(trans = BRFSS_all_clean$TRNSGNDR,
                  sex = BRFSS_all_clean$SEX),
            margin = 2)
 ```
+
+In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans, reported that they identify as transgender (add cite: <https://news.gallup.com/poll/329708/lgbt-identification-rises-latest-estimate.aspx>). The percentage varied by age group, with the youngest cohort, Generation Z born 1997-2002, reporting 1.8% of survey participants identified as transgender compared to 1.2% in the previous cohort (Millenials) and just .3% in the cohort born before 1946 (Traditionalists). Transgender people are... Although the terms sex and gender are used interchangeably by... Gender identity is distinct from sex and sexual orientation and consists of...
+
+The BRFSS is...
+
+Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask participants about gender identity. In 2015 the BRFSS added an optional question about gender identity to the survey and states could decide whether or not to include the gender identity question when conducting data collection. Although a gender identity question was added, the wording of the sex question did not make any distinction between sex and gender for several years. In 2015 to 2017, the interviewer selected the sex of the participant given the prompt: "Indicate sex of respondent." In 2018, the interviewer asked, "What is your sex? or What was your sex at birth? Was it..." and gave the possible responses of male and female. In 2019, the interviewer asked, "Are you male or female?". The sex question did not change substantially until the 2020 survey administration, where it was changed to multiple prompts depending on the mode of data collection (cell phone, etc.), "What was your sex at birth? Was it male or female?" 
+
+
+
+
 
 
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
