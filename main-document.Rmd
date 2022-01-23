@@ -98,6 +98,7 @@ BRFSS_2019 <- BRFSS_2019 %>%
 
 
 
+
 # # combine all years into 1 dataset
 BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
                    select(BRFSS_2016, SEX, TRNSGNDR, year),
@@ -160,23 +161,23 @@ Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask p
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | \_RFDRHV5   | Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)                                                                            | computed    | 2015, 2016, 2017 |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| DIABETE3    | (Ever told) you have diabetes (If "Yes" and respondent is female, ask "Was this only when you were pregnant?". If Respondent says pre-diabetes or borderline diabetes, use response code 4.) | female      | 2015             |
+| DIABETE3    | (Ever told) you have diabetes (If "Yes" and respondent is female, ask "Was this only when you were pregnant?". If Respondent says pre-diabetes or borderline diabetes, use response code 4.) | female      | 2015       2018      |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PREGNANT    | To your knowledge, are you now pregnant?                                                                                                                                                     | female      | 2015, 2016, 2017 |
+| PREGNANT    | To your knowledge, are you now pregnant?                                                                                                                                                     | female      | 2015, 2016, 2017, 2018  |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| HADMAM      | A mammogram is an x-ray of each breast to look for breast cancer. Have you ever had a mammogram?                                                                                             | female      | 2015, 2016       |
+| HADMAM      | A mammogram is an x-ray of each breast to look for breast cancer. Have you ever had a mammogram?                                                                                             | female      | 2015, 2016, 2018     |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| HOWLONG     | How long has it been since you had your last mammogram?                                                                                                                                      | female      | 2015, 2016       |
+| HOWLONG     | How long has it been since you had your last mammogram?                                                                                                                                      | female      | 2015, 2016, 2018      |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| HADPAP2     | A Pap test is a test for cancer of the cervix. Have you ever had a Pap test?                                                                                                                 | female      | 2015, 2016       |
+| HADPAP2     | A Pap test is a test for cancer of the cervix. Have you ever had a Pap test?                                                                                                                 | female      | 2015, 2016, 2018    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| LASTPAP2    | How long has it been since you had your last Pap test?                                                                                                                                       | female      | 2015, 2016       |
+| LASTPAP2    | How long has it been since you had your last Pap test?                                                                                                                                       | female      | 2015, 2016, 2018    |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| HPVTEST     | An HPV test is sometimes given with the Pap test for cervical cancer screening. Have you ever had an HPV test?                                                                               | female      | 2015, 2016       |
+| HPVTEST     | An HPV test is sometimes given with the Pap test for cervical cancer screening. Have you ever had an HPV test?                                                                               | female      | 2015, 2016, 2018   |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| HPLSTTST    | How long has it been since you had your last HPV test?                                                                                                                                       | female      | 2015, 2016       |
+| HPLSTTST    | How long has it been since you had your last HPV test?                                                                                                                                       | female      | 2015, 2016, 2018     |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| HADHYST2    | Have you had a hysterectomy? (A hysterectomy is an operation to remove the uterus (womb).)                                                                                                   | female      | 2015, 2016       |
+| HADHYST2    | Have you had a hysterectomy? (A hysterectomy is an operation to remove the uterus (womb).)                                                                                                   | female      | 2015, 2016, 2018   |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | PROFEXAM    | A clinical breast exam is when a doctor, nurse, or other health professional feels the breast for lumps. Have you ever had a clinical breast exam?                                           | female      | 2015, 2016       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
@@ -184,15 +185,18 @@ Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask p
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | PCPSAAD2    | Has a doctor, nurse, or other health professional EVER talked with you about the advantages of the PSA test?                                                                                 | male        | 2015, 2016       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PCPSADI1    | Has a doctor, nurse, or other health professional EVER talked with you about the disadvantages of the PSA test?                                                                              | male        | 2015, 2016       |
+---------------------+-------------+------------------+
+| PCPSAAD3    | Has a doctor, nurse, or other health professional EVER talked with you about the advantages of the PSA test?                                                                                 | male        | 2018      |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PCPSARE1    | Has a doctor, nurse, or other health professional EVER recommended that you have a PSA test?                                                                                                 | male        | 2015, 2016       |
+| PCPSADI1    | Has a doctor, nurse, or other health professional EVER talked with you about the disadvantages of the PSA test?                                                                              | male        | 2015, 2016, 2018     |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PSATEST1    | Have you EVER HAD a PSA test?                                                                                                                                                                | male        | 2015, 2016       |
+| PCPSARE1    | Has a doctor, nurse, or other health professional EVER recommended that you have a PSA test?                                                                                                 | male        | 2015, 2016, 2018     |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PSATIME     | How long has it been since you had your last PSA test?                                                                                                                                       | male        | 2015, 2016       |
+| PSATEST1    | Have you EVER HAD a PSA test?                                                                                                                                                                | male        | 2015, 2016, 2018       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PCPSARS1    | What was the MAIN reason you had this PSA test -- was it ...?                                                                                                                                | male        | 2015, 2016       |
+| PSATIME     | How long has it been since you had your last PSA test?                                                                                                                                       | male        | 2015, 2016, 2018       |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
+| PCPSARS1    | What was the MAIN reason you had this PSA test -- was it ...?                                                                                                                                | male        | 2015, 2016, 2018       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | PCPSADE1    | Which of the following best describes the decision to have the PSA test done?                                                                                                                | male        | 2015, 2016       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
@@ -212,3 +216,10 @@ Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask p
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | NOBCUSE6\   | What was your main reason for not doing anything the last time you had sex to keep you from getting pregnant?                                                                                | female      | 2017             |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
+---------------------+-------------+------------------+
+| CNCRTYP1\   | With your most recent diagnoses of cancer, what type of cancer was it?
+                      | female, male | 2018           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
+
+
+
