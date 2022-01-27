@@ -143,7 +143,7 @@ prop.table(table(trans = BRFSS_all_clean$TRNSGNDR,
 
 In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans, reported that they identify as transgender (add cite: <https://news.gallup.com/poll/329708/lgbt-identification-rises-latest-estimate.aspx>). The percentage varied by age group, with the youngest cohort, Generation Z born 1997-2002, reporting 1.8% of survey participants identified as transgender compared to 1.2% in the previous cohort (Millenials) and just .3% in the cohort born before 1946 (Traditionalists). Transgender people are individuals whose biological sex, or sex assigned at birth, differs from their gender identity.(add cite: <https://www.teachingtransgender.org/terminology-sheet-free-resource/>) Although the terms sex and gender are used interchangeably by... Gender identity is distinct from sex and sexual orientation and consists of how one identifies and conceptualizes onself as a gendered being along a spectrum of male, female, or in some cases, neither. Gender identity is often perceived outwardly through observable presentation that reflect internal identity, such as through behavior or appearance. Alternately, sexual orientation describes external physical, emotional, and sexual attraction toward others. add cite: (<https://www.teachingtransgender.org/terminology-sheet-free-resource/>). It is important to note that sexual orientation is independent of sex and gender and not synonymous. 
 
-The Behavioral Risk Factor Surveillance Survey (BRFSS) collects data on risk behaviors, health conditions, and the use of health-related services from U.S residents via telephone. It is considered the world's largest health survey system, collecting data from over 400,000 yearly. add cite: (<https://www.cdc.gov/brfss/about/index.htm>).  
+The Behavioral Risk Factor Surveillance Survey (BRFSS) collects data on risk behaviors, health conditions, and the use of health-related services from U.S residents. Respondent data is collected each month over telephone to be aggregated and assessed by the CDC. It is considered the world's largest health survey system, collecting data from over 400,000 individuals yearly. add cite: (<https://www.cdc.gov/brfss/about/index.htm>).
 
 Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask participants about gender identity. In 2015 the BRFSS added an optional question about gender identity to the survey and states could decide whether or not to include the gender identity question when conducting data collection. Although a gender identity question was added, the wording of the sex question did not make any distinction between sex and gender for several years. In 2015 to 2017, the interviewer selected the sex of the participant given the prompt: "Indicate sex of respondent." In 2018, the interviewer asked, "What is your sex? or What was your sex at birth? Was it..." and gave the possible responses of male and female. In 2019, the interviewer asked, "Are you male or female?". The sex question did not change substantially until the 2020 survey administration, where it was changed to multiple prompts depending on the mode of data collection (cell phone, etc.), "What was your sex at birth? Was it male or female?" 
 
@@ -160,6 +160,8 @@ Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask p
 | \_RFBING5   | Binge drinkers (males having five or more drinks on one occasion, females having four or more drinks on one occasion)                                                                        | computed    | 2015             |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | \_RFDRHV5   | Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)                                                                            | computed    | 2015, 2016, 2017 |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
+| \_RFDRHV6   | Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)                                                                            | computed    | 2018|
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | DIABETE3    | (Ever told) you have diabetes (If "Yes" and respondent is female, ask "Was this only when you were pregnant?". If Respondent says pre-diabetes or borderline diabetes, use response code 4.) | female      | 2015       2018      |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
@@ -179,9 +181,9 @@ Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask p
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | HADHYST2    | Have you had a hysterectomy? (A hysterectomy is an operation to remove the uterus (womb).)                                                                                                   | female      | 2015, 2016, 2018   |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PROFEXAM    | A clinical breast exam is when a doctor, nurse, or other health professional feels the breast for lumps. Have you ever had a clinical breast exam?                                           | female      | 2015, 2016       |
+| PROFEXAM    | A clinical breast exam is when a doctor, nurse, or other health professional feels the breast for lumps. Have you ever had a clinical breast exam?                                           | female      | 2015, 2016, 2018       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| LENGEXAM    | How long has it been since your last breast exam?                                                                                                                                            | female      | 2015, 2016       |
+| LENGEXAM    | How long has it been since your last breast exam?                                                                                                                                            | female      | 2015, 2016, 2018       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | PCPSAAD2    | Has a doctor, nurse, or other health professional EVER talked with you about the advantages of the PSA test?                                                                                 | male        | 2015, 2016       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
@@ -198,7 +200,7 @@ Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask p
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | PCPSARS1    | What was the MAIN reason you had this PSA test -- was it ...?                                                                                                                                | male        | 2015, 2016, 2018       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-| PCPSADE1    | Which of the following best describes the decision to have the PSA test done?                                                                                                                | male        | 2015, 2016       |
+| PCPSADE1    | Which of the following best describes the decision to have the PSA test done?                                                                                                                | male        | 2015, 2016, 2018      |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 | PCDMDECN    | Who made the decision with you? (Mark all that apply)                                                                                                                                        | male        | 2015, 2016       |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
@@ -218,8 +220,30 @@ Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask p
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
 ---------------------+-------------+------------------+
 | CNCRTYP1\   | With your most recent diagnoses of cancer, what type of cancer was it?
-                      | female, male | 2018           |
+                                      | female, male | 2018           |
 +-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
-
-
-
+| CSRVDOC1\   |  What type of doctor provides the majority of your health care?
+                                      | female       | 2018           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
+| SOMALE\   |  Which of the following best represents how you think of yourself?
+                                      | male       | 2018           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
+| SOFEMALE\   |  Which of the following best represents how you think of yourself?
+                                      | female       | 2018           |
++-------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+------------------+
+| _RFMAM21\   |  Women respondents aged 40+ who have had a mammogram in the past two years?
+                                      | female       | 2018           |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------+-------------+------------------+
+| _MAM5022\   |  Women respondents aged 50-74 who have had a mammogram in the past two years?
+                                      | female       | 2018           |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------+-------------+------------------+
+| _RFPAP34\   |  Women respondents aged 50-74 who have had a pap test in the past two years?
+                                      | female       | 2018           |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------+-------------+------------------+
+| _RFPSA22\   |  Male respondents aged 40+ who have had a PSA test in the past two years?
+                                      | male       | 2018           |
++-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------+-------------+------------------+
