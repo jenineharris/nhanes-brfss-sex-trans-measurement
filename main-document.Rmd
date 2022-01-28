@@ -10,7 +10,8 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, results = FALSE, message = FALSE,
+                      warning = FALSE)
 ```
 
 ```{r}
@@ -206,7 +207,7 @@ We imported the BRFSS data sets from 2015 through 2020 directly from the
 Centers for Disease Control and Prevention website. We used R
 statistical software version 4.1.1 [@rstats], the RStudio (version
 1.4.1717) interactive development environment [@rstudio], and a function
-from version 2.4.3 of the haven package [\@haven] to import the data.
+from version 2.4.3 of the haven package [@haven] to import the data.
 
 ```{r}
 # basic table exploring data
