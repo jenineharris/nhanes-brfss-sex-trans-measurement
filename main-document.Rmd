@@ -3,6 +3,7 @@ title: "Measurement of sex and gender identity in BRFSS"
 author: "Jenine K Harris, Odalis Hernandez"
 date: "9/15/2021"
 output: word_document
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -129,6 +130,25 @@ BRFSS_all_clean <- BRFSS_all %>%
    filter(TRNSGNDR %in% c("Yes, Transgender, male-to-female",
                           "Yes, Transgender, female to male")) %>% 
    droplevels()
+```
+
+In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans, reported that they identify as transgender (add cite: <https://news.gallup.com/poll/329708/lgbt-identification-rises-latest-estimate.aspx>). The percentage varied by age group, with the youngest cohort, Generation Z born 1997-2002, reporting 1.8% of survey participants identified as transgender compared to 1.2% in the previous cohort (Millenials) and just .3% in the oldest cohort born before 1946 (Traditionalists). Transgender people are... Although the terms sex and gender are used interchangeably by... Gender identity is distinct from sex and sexual orientation and consists of...
+
+The BRFSS is...
+
+Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did not ask participants about gender identity. In 2015 the BRFSS added an optional question about gender identity to the survey and states could decide whether or not to include the gender identity question when conducting data collection. Although a gender identity question was added, the wording of the sex question did not make any distinction between sex and gender for several years. In 2015 to 2017, the interviewer selected the sex of the participant given the prompt: "Indicate sex of respondent." In 2018, the interviewer asked, "What is your sex? or What was your sex at birth? Was it..." and gave the possible responses of male and female. In 2019, the interviewer asked, "Are you male or female?". In 2020, the sex question was changed to, "What was your sex at birth? Was it male or female?"
+
+In a recent paper [@howerton2021] Howerton and Harris found that transgender participants did not give a response to the sex question that was consistent with respect to their gender identity response. For example, some participants who identified as female-to-male transgender identity reported their sex as male and others reported their sex as female. Likewise, among those who identified as male-to-female transgender identity, some reported their sex to be male and others reported their sex to be female.
+
+Scientific research on transgender healthcare is underdeveloped and the role of sex recorded at birth in health and healthcare remains unclear for transgender people [citations needed see alcohol literature and screening literature]. However, sex recorded at birth is a risk factor for numerous types of cancer and other health outcomes. In order to better understand the role of sex recorded at birth in health and health outcomes for transgender people, it may be useful to understand how to best measure sex recorded at birth. This paper examines the ways sex was measured in the BRFSS from 2015 (the first year of the gender identity question) to the most recently released year of data in 2020.
+
+### Methods
+
+#### Data
+
+We imported the BRFSS data sets from 2015 through 2020 directly from the Centers for Disease Control and Prevention website. We used R statistical software version 4.1.1 [@rstats], the RStudio (version 1.4.1717) interactive development environment [@rstudio], and a function from version 2.4.3 of the haven package [\@haven] to import the data.
+
+```{r}
 # basic table exploring data
 table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX, year = BRFSS_all_clean$year)
 
@@ -140,6 +160,7 @@ prop.table(table(trans = BRFSS_all_clean$TRNSGNDR,
                  sex = BRFSS_all_clean$SEX),
            margin = 2)
 ```
+
 
 In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans, reported that they identify as transgender (add cite: <https://news.gallup.com/poll/329708/lgbt-identification-rises-latest-estimate.aspx>). The percentage varied by age group, with the youngest cohort, Generation Z born 1997-2002, reporting 1.8% of survey participants identified as transgender compared to 1.2% in the previous cohort (Millenials) and just .3% in the cohort born before 1946 (Traditionalists). Transgender people are individuals whose biological sex, or sex assigned at birth, differs from their gender identity.(add cite: <https://www.teachingtransgender.org/terminology-sheet-free-resource/>) Although the terms sex and gender are used interchangeably by... Gender identity is distinct from sex and sexual orientation and consists of how one identifies and conceptualizes onself as a gendered being along a spectrum of male, female, or in some cases, neither. Gender identity is often perceived outwardly through observable presentation that reflect internal identity, such as through behavior or appearance. Alternately, sexual orientation describes external physical, emotional, and sexual attraction toward others. add cite: (<https://www.teachingtransgender.org/terminology-sheet-free-resource/>). It is important to note that sexual orientation is independent of sex and gender and not synonymous. 
 
