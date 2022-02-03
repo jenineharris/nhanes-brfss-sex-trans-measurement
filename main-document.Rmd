@@ -230,6 +230,7 @@ from version 2.4.3 of the haven package [@haven] to import the data.
 #                  sex = BRFSS_all_clean$SEX),
 #            margin = 2)
 
+
 BRFSS_all_clean %>% 
   drop_na() %>% 
   group_by(TRNSGNDR, SEX, yearLong) %>% 
