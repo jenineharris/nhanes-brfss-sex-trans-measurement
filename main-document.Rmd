@@ -249,12 +249,58 @@ BRFSS_all_clean %>%
 
 ```
 
-| Question id | Question                                                                                                              | Asked of... | Year(s)          |
-|-------------|-----------------------------------------------------------------------------------------------------------------------|-------------|------------------|
-| \_DRNKWK1   |                                                                                                                       | computed    | 2015             |
-| \_RFBING5   | Binge drinkers (males having five or more drinks on one occasion, females having four or more drinks on one occasion) | computed    | 2015 ,2018       |
-| \_RFDRHV5   | Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)     | computed    | 2015, 2016, 2017 |
-| \_RFDRHV6   | Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)     | computed    | 2018             |
++---+--------------------------------------------------------+---+----+
+| Q | Question                                               | A | Y  |
+| u |                                                        | s | ea |
+| e |                                                        | k | r( |
+| s |                                                        | e | s) |
+| t |                                                        | d |    |
+| i |                                                        | o |    |
+| o |                                                        | f |    |
+| n |                                                        | . |    |
+| i |                                                        | . |    |
+| d |                                                        | . |    |
++===+========================================================+===+====+
+| \ |                                                        | c | 20 |
+| _ |                                                        | o | 15 |
+| D |                                                        | m |    |
+| R |                                                        | p |    |
+| N |                                                        | u |    |
+| K |                                                        | t |    |
+| W |                                                        | e |    |
+| K |                                                        | d |    |
+| 1 |                                                        |   |    |
++---+--------------------------------------------------------+---+----+
+| \ | Binge drinkers (males having five or more drinks on    | c | 20 |
+| _ | one occasion, females having four or more drinks on    | o | 15 |
+| R | one occasion)                                          | m | ,  |
+| F |                                                        | p | 20 |
+| B |                                                        | u | 18 |
+| I |                                                        | t |    |
+| N |                                                        | e |    |
+| G |                                                        | d |    |
+| 5 |                                                        |   |    |
++---+--------------------------------------------------------+---+----+
+| \ | Heavy drinkers (adult men having more than 14 drinks   | c | 2  |
+| _ | per week and adult women having more than 7 drinks per | o | 01 |
+| R | week)                                                  | m | 5, |
+| F |                                                        | p | 2  |
+| D |                                                        | u | 01 |
+| R |                                                        | t | 6, |
+| H |                                                        | e | 20 |
+| V |                                                        | d | 17 |
+| 5 |                                                        |   |    |
++---+--------------------------------------------------------+---+----+
+| \ | Heavy drinkers (adult men having more than 14 drinks   | c | 20 |
+| _ | per week and adult women having more than 7 drinks per | o | 18 |
+| R | week)                                                  | m |    |
+| F |                                                        | p |    |
+| D |                                                        | u |    |
+| R |                                                        | t |    |
+| H |                                                        | e |    |
+| V |                                                        | d |    |
+| 6 |                                                        |   |    |
++---+--------------------------------------------------------+---+----+
 
 +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------+-------------+------------------+ \| \_RFDRHV7 \| Heavy
