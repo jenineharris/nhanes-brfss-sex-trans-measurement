@@ -14,7 +14,8 @@ knitr::opts_chunk$set(echo = FALSE, results = FALSE, message = FALSE,
                       warning = FALSE)
 ```
 
-```{r}
+```{r eval = FALSE}
+# remove the eval = FALSE to run
 # TO CREATE ANALYTIC DATA SET, UNCOMMENT AND RUN THIS CODE CHUNK
 # bring in files from online BRFSS 2015 to 2018 data
 library(haven)
@@ -51,8 +52,8 @@ download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020X
 BRFSS_2020 <- read_xpt(file = temp)
 ```
 
-```{r}
-#
+```{r eval = FALSE}
+# remove the eval = FALSE to run
 # # select only the variables to use in the analysis (e.g. changes 300+ variables to only needed for analysis)
 
 #
@@ -114,11 +115,11 @@ BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
 
 # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # in instead of running all steps above
-# write.csv(BRFSS_all, file = "brfss_all.csv")
+write.csv(BRFSS_all, file = "brfss_all.csv")
 ```
 
 ```{r}
-#BRFSS_all <- read.csv("brfss_all.csv")
+BRFSS_all <- read.csv("brfss_all.csv")
 # add labels
 BRFSS_all_clean <- BRFSS_all %>% 
    mutate(SEX = recode_factor(SEX, 
@@ -262,43 +263,47 @@ BRFSS_all_clean %>%
 | d |                                                        | . |    |
 +===+========================================================+===+====+
 | \ |                                                        | c | 20 |
-| _ |                                                        | o | 15 |
-| D |                                                        | m |    |
-| R |                                                        | p |    |
-| N |                                                        | u |    |
-| K |                                                        | t |    |
-| W |                                                        | e |    |
-| K |                                                        | d |    |
+| \ |                                                        | o | 15 |
+| _ |                                                        | m |    |
+| D |                                                        | p |    |
+| R |                                                        | u |    |
+| N |                                                        | t |    |
+| K |                                                        | e |    |
+| W |                                                        | d |    |
+| K |                                                        |   |    |
 | 1 |                                                        |   |    |
 +---+--------------------------------------------------------+---+----+
 | \ | Binge drinkers (males having five or more drinks on    | c | 20 |
-| _ | one occasion, females having four or more drinks on    | o | 15 |
-| R | one occasion)                                          | m | ,  |
-| F |                                                        | p | 20 |
-| B |                                                        | u | 18 |
-| I |                                                        | t |    |
-| N |                                                        | e |    |
-| G |                                                        | d |    |
+| \ | one occasion, females having four or more drinks on    | o | 15 |
+| _ | one occasion)                                          | m | ,  |
+| R |                                                        | p | 20 |
+| F |                                                        | u | 18 |
+| B |                                                        | t |    |
+| I |                                                        | e |    |
+| N |                                                        | d |    |
+| G |                                                        |   |    |
 | 5 |                                                        |   |    |
 +---+--------------------------------------------------------+---+----+
 | \ | Heavy drinkers (adult men having more than 14 drinks   | c | 2  |
-| _ | per week and adult women having more than 7 drinks per | o | 01 |
-| R | week)                                                  | m | 5, |
-| F |                                                        | p | 2  |
-| D |                                                        | u | 01 |
-| R |                                                        | t | 6, |
-| H |                                                        | e | 20 |
-| V |                                                        | d | 17 |
+| \ | per week and adult women having more than 7 drinks per | o | 01 |
+| _ | week)                                                  | m | 5, |
+| R |                                                        | p | 2  |
+| F |                                                        | u | 01 |
+| D |                                                        | t | 6, |
+| R |                                                        | e | 20 |
+| H |                                                        | d | 17 |
+| V |                                                        |   |   |
 | 5 |                                                        |   |    |
 +---+--------------------------------------------------------+---+----+
 | \ | Heavy drinkers (adult men having more than 14 drinks   | c | 20 |
-| _ | per week and adult women having more than 7 drinks per | o | 18 |
-| R | week)                                                  | m |    |
-| F |                                                        | p |    |
-| D |                                                        | u |    |
-| R |                                                        | t |    |
-| H |                                                        | e |    |
-| V |                                                        | d |    |
+| \ | per week and adult women having more than 7 drinks per | o | 18 |
+| _ | week)                                                  | m |    |
+| R |                                                        | p |    |
+| F |                                                        | u |    |
+| D |                                                        | t |    |
+| R |                                                        | e |    |
+| H |                                                        | d |    |
+| V |                                                        |   |    |
 | 6 |                                                        |   |    |
 +---+--------------------------------------------------------+---+----+
 
@@ -414,4 +419,3 @@ the past two years? \| female \| 2018 \|
 the past two years? \| female \| 2018 \|
 +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------+-------------+------------------+
-
