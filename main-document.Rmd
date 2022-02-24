@@ -171,6 +171,21 @@ characteristics. This in mind, questions regarding sex and gender are implicitly
 receiving both biological and social information, or secondary sex 
 characteristics and gender sentiment (Johnson). 
 
+Both social science and medical research request sex and gender information to 
+include in analysis. However, definitions have been found to vary across
+disciplines (Bauer). Queries to ascertain  dimensions of sex and gender depend 
+on the intended outcome specific to the research question (Bauer). For example,
+surveys might erroneously utilize "gender" when explaining biological differences
+rather than sex (Johnson). Sex and gender measures have developed from early
+conventions of assumption recording in telephone and in-person surveys to single
+item questions, neither of which are capable of fully assessing sex and gender 
+(Bauer). Today, most methods of recording sex and gender in large scale medical 
+and public health surveys feature some variation of a two-item question, 
+check-all-that-apply, or write-in response. Although these methods are more 
+robust in assessing sex and gender among participants, there are still
+numerous elements of sex that are more difficult to determine from queries
+such as physiology, genes, and hormones. This is also the case with elements of
+gender, like ascribed and perceived gender roles (Johnson).
 
 The Behavioral Risk Factor Surveillance Survey (BRFSS) collects data on
 risk behaviors, health conditions, and the use of health-related
