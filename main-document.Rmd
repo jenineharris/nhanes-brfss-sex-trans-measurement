@@ -156,14 +156,21 @@ differs from their gender identity .(add cite:
 <https://www.teachingtransgender.org/terminology-sheet-free-resource/>)
 Gender identity is distinct from sex and sexual orientation and consists
 of how one identifies and conceptualizes onself as a gendered being
-along a spectrum of male, female, or in some cases, neither. Gender
-identity is often perceived outwardly through observable presentation
-that reflect internal identity, such as through behavior or appearance.
+along a spectrum of male, female. Some individuals identify as both or neither 
+male or female because they are not considered inclusive enough to comprise 
+the range gender experiences. Gender identity refers to felt sense of self (Tate).
+It is often perceived outwardly through observable presentation
+that reflects internal identity, such as through behavior or appearance.
 Alternately, sexual orientation describes external physical, emotional,
 and sexual attraction toward others. add cite:
 (<https://www.teachingtransgender.org/terminology-sheet-free-resource/>).
 It is important to note that sexual orientation is independent of sex
-and gender and not synonymous.
+and gender and not synonymous but nevertheless linked. Life experiences and
+how one is perceived socially is influenced by the presence of secondary sex 
+characteristics. This in mind, questions regarding sex and gender are implicitly
+receiving both biological and social information, or secondary sex 
+characteristics and gender sentiment (Johnson). 
+
 
 The Behavioral Risk Factor Surveillance Survey (BRFSS) collects data on
 risk behaviors, health conditions, and the use of health-related
