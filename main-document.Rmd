@@ -148,20 +148,15 @@ your sex? or What was your sex at birth? Was it...',
 
 In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans, reported that they identify as transgender [@lgbtgallup]. The percentage varied by age group, with the cohort born in 1997-2002 reporting 1.8% of survey participants identified as transgender compared to 1.2% in the previous cohort and just .3% in the cohort born before 1946. Transgender people are individuals whose biological sex, or sex recorded at birth, differs from their gender identity [@galupo2016labels; @howerton2021]. While sometimes conflated, Gender identity is how a person identifies and conceptualizes their own gender and is distinct from biological sex and sexual orientation [@galupo2016labels; @tate2020undoing]. Sex, sexual orientation, and gender identity all have implications for health, health care, and health outcomes [@legato2016consideration; @agenor2016sexual; @gonzales2016comparison; @mcclure2022gender]. 
 
-Understanding the factors that influence health, health care, and health outcomes is an important part of social science and medical research. Many social science and medical surveys request sex and some request gender identity information to include in analysis. However, definitions have been found to vary across
-disciplines (Bauer). Queries to ascertain  dimensions of sex and gender depend 
+Conducting research to understand factors that influence health, health care, and health outcomes is an important part of social science and medical research. Given the roles of sex, sexual orientation, and gender identity in health, many social science and medical surveys seek to measure sex and a growing number also collect sexual orientation and gender identity information to include in analysis. 
+
+Until recently, measurement of gender identity was unusual and measurement of sex was often through  [@bauer2017transgender]. Today, most methods of recording sex and gender in large scale medical and public health surveys feature some variation of a two-item question, check-all-that-apply, or write-in response. Although these methods are more robust in assessing sex and gender among participants, there are still numerous elements of sex that are more difficult to determine from queries such as physiology, genes, and hormones. This is also the case with elements of gender, like ascribed and perceived gender roles (Johnson).
+
+However, definitions have been found to vary across
+disciplines (Bauer). Queries to ascertain dimensions of sex and gender depend 
 on the intended outcome specific to the research question (Bauer). For example,
 surveys might erroneously utilize "gender" when explaining biological differences
-rather than sex (Johnson). Sex and gender measures have developed from early
-conventions of assumption recording in telephone and in-person surveys to single
-item questions, neither of which are capable of fully assessing sex and gender 
-(Bauer). Today, most methods of recording sex and gender in large scale medical 
-and public health surveys feature some variation of a two-item question, 
-check-all-that-apply, or write-in response. Although these methods are more 
-robust in assessing sex and gender among participants, there are still
-numerous elements of sex that are more difficult to determine from queries
-such as physiology, genes, and hormones. This is also the case with elements of
-gender, like ascribed and perceived gender roles (Johnson).
+rather than sex (Johnson). 
 
 The Behavioral Risk Factor Surveillance Survey (BRFSS) collects data on
 risk behaviors, health conditions, and the use of health-related
