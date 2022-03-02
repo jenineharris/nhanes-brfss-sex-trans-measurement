@@ -115,7 +115,7 @@ BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
 
 # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # in instead of running all steps above
-write.csv(BRFSS_all, file = "brfss_all.csv")
+# write.csv(BRFSS_all, file = "brfss_all.csv")
 ```
 
 ```{r}
@@ -146,34 +146,9 @@ your sex? or What was your sex at birth? Was it...',
    droplevels()
 ```
 
-In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans,
-reported that they identify as transgender [@lgbtgallup]. The percentage
-varied by age group, with the youngest cohort, Generation Z born
-1997-2002, reporting 1.8% of survey participants identified as
-transgender compared to 1.2% in the previous cohort (Millenials) and
-just .3% in the cohort born before 1946 (Traditionalists). Transgender
-people are individuals whose biological sex, or sex assigned at birth,
-differs from their gender identity .(add cite:
-<https://www.teachingtransgender.org/terminology-sheet-free-resource/>)
-Gender identity is distinct from sex and sexual orientation and consists
-of how one identifies and conceptualizes onself as a gendered being
-along a spectrum of male, female. Some individuals identify as both or neither 
-male or female because they are not considered inclusive enough to comprise 
-the range gender experiences. Gender identity refers to felt sense of self (Tate).
-It is often perceived outwardly through observable presentation
-that reflects internal identity, such as through behavior or appearance.
-Alternately, sexual orientation describes external physical, emotional,
-and sexual attraction toward others. add cite:
-(<https://www.teachingtransgender.org/terminology-sheet-free-resource/>).
-It is important to note that sexual orientation is independent of sex
-and gender and not synonymous but nevertheless linked. Life experiences and
-how one is perceived socially is influenced by the presence of secondary sex 
-characteristics. This in mind, questions regarding sex and gender are implicitly
-receiving both biological and social information, or secondary sex 
-characteristics and gender sentiment (Johnson). 
+In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans, reported that they identify as transgender [@lgbtgallup]. The percentage varied by age group, with the cohort born in 1997-2002 reporting 1.8% of survey participants identified as transgender compared to 1.2% in the previous cohort and just .3% in the cohort born before 1946. Transgender people are individuals whose biological sex, or sex recorded at birth, differs from their gender identity [@galupo2016labels; @howerton2021]. While sometimes conflated, Gender identity is how a person identifies and conceptualizes their own gender and is distinct from biological sex and sexual orientation [@galupo2016labels; @tate2020undoing]. Sex, sexual orientation, and gender identity all have implications for health, health care, and health outcomes [@legato2016consideration; @agenor2016sexual; @gonzales2016comparison; @mcclure2022gender]. 
 
-Both social science and medical research request sex and gender information to 
-include in analysis. However, definitions have been found to vary across
+Understanding the factors that influence health, health care, and health outcomes is an important part of social science and medical research. Many social science and medical surveys request sex and some request gender identity information to include in analysis. However, definitions have been found to vary across
 disciplines (Bauer). Queries to ascertain  dimensions of sex and gender depend 
 on the intended outcome specific to the research question (Bauer). For example,
 surveys might erroneously utilize "gender" when explaining biological differences
