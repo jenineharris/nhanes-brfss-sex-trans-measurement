@@ -216,43 +216,62 @@ reported their sex as male and others reported their sex as female.
 Likewise, among those who identified as male-to-female transgender
 identity, some reported their sex to be male and others reported their
 sex to be female. This has likely led to numerous published scientific
-papers examining sex differences but potentially including participants
+papers examining sex differences and potentially including participants
 whose sex recorded at birth was something other than their sex as
 recorded in the BRFSS.
 
-We sought to better understand examined the relationship between sex and
-gender identity in the BRFSS data from 2015 (the first year of the
-gender identity question) to the most recently released year of data in
-2020. Specifically we answer three questions: (1) What is the
-relationship between sex and gender identity responses for participants
-over this six year period?; (2) How has the relationship between
-measured sex and gender identity changed as the sex question changed
-over this six year period?; and (3) Did the 2020 version of the question
-that specified "at birth" result in different patterns of sex and gender
-identity reporting compared to previous years?
+The implications of how sex is measured also impacts multiple computed
+variables in the BRFSS that rely on the sex variable as part of the
+calculation. For example, the BRFSS variable for heavy drinking codes a
+male as a heavy drinker at 14 or more alcoholic drinks per week and a
+female as a heavy drinker at 7 or more alcoholic drinks per week.
+Questions related to pregnancy and pregnancy or birth-related health
+conditions are only asked of those who report being female and questions
+about birth control type and behavior differ for those who select male
+or female sex. Likewise, questions about mammograms, breast exams, human
+papilloma virus (HPV) screening and vaccination, and prostate specific
+antigen tests are only asked of people who report being in a specific
+sex category.
+
+We sought to better understand the relationship between sex and gender
+identity in the BRFSS data from 2015 (the first year of the gender
+identity question) to the most recently released year of data in 2020.
+Specifically we answer three questions: (1) What is the relationship
+between sex and gender identity responses for participants over this six
+year period?; (2) How has the relationship between measured sex and
+gender identity changed as the sex question changed over this six year
+period?; and (3) Did the 2020 version of the question that specified "at
+birth" result in different patterns of sex and gender identity reporting
+compared to previous years?
 
 ### Methods
-
-#### Data
 
 We imported the BRFSS data sets from 2015 through 2020 directly from the
 Centers for Disease Control and Prevention website. We used R
 statistical software version 4.1.1 [@rstats], the RStudio (version
 1.4.1717) interactive development environment [@rstudio], and a function
-from version 2.4.3 of the haven package [@haven] to import the data.
+from version 2.4.3 of the haven package [@haven] to import the data. We
+used the tidyverse [@wickham2017] software package to manage and
+visualize the data and the table1 package to compute descriptive
+statistics [@table1].
+
+### Results
 
 ```{r}
-# # basic table exploring data
-# table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX, year = BRFSS_all_clean$year)
-# 
-# # library(table1)
-# # 
-# # table1(~ year | SEX * TRNSGNDR, data = BRFSS_all_clean)
-# 
-# prop.table(table(trans = BRFSS_all_clean$TRNSGNDR, 
-#                  sex = BRFSS_all_clean$SEX),
-#            margin = 2)
+# basic table exploring data
+table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX, year = BRFSS_all_clean$year)
 
+library(table1)
+
+table1(~ year | TRNSGNDR * SEX, data = BRFSS_all_clean)
+
+prop.table(table(trans = BRFSS_all_clean$TRNSGNDR,
+                 sex = BRFSS_all_clean$SEX,
+                 year = BRFSS_all_clean$year),
+           margin = 2)
+```
+
+```{r}
 BRFSS_all_clean %>% 
   drop_na() %>% 
   group_by(TRNSGNDR, SEX, yearLong) %>% 
@@ -295,42 +314,34 @@ chisqtrans(2020)
 
 ```
 
-Scientific research on transgender healthcare is underdeveloped and the
-role of sex recorded at birth in health and healthcare remains unclear
-for transgender people [citations needed see alcohol literature and
-screening literature]. However, sex recorded at birth is a risk factor
-for numerous types of cancer and other health outcomes. In order to
-better understand the role of sex recorded at birth in health and health
-outcomes for transgender people, it may be useful to understand how to
-best measure sex recorded at birth.
-
-+------------+-----------------------------+------------+------------+
-| Q u e s t  | Question                    | A s k e d  | Y ea r( s) |
-| i o n i d  |                             | o f . . .  |            |
-+============+=============================+============+============+
-| \          |                             | c o m p u  | 20 15      |
-| \          |                             | t e d      |            |
-| \_ D R N K |                             |            |            |
-| W K 1      |                             |            |            |
-+------------+-----------------------------+------------+------------+
-| \          | Binge drinkers (males       | c o m p u  | 20 15 , 20 |
-| \          | having five or more drinks  | t e d      | 18         |
-| \_ R F B I | on one occasion, females    |            |            |
-| N G 5      | having four or more drinks  |            |            |
-|            | on one occasion)            |            |            |
-+------------+-----------------------------+------------+------------+
-| \          | Heavy drinkers (adult men   | c o m p u  | 2 01 5, 2  |
-| \          | having more than 14 drinks  | t e d      | 01 6, 20   |
-| \_ R F D R | per week and adult women    |            | 17         |
-| H V 5      | having more than 7 drinks   |            |            |
-|            | per week)                   |            |            |
-+------------+-----------------------------+------------+------------+
-| \          | Heavy drinkers (adult men   | c o m p u  | 20 18      |
-| \          | having more than 14 drinks  | t e d      |            |
-| \_ R F D R | per week and adult women    |            |            |
-| H V 6      | having more than 7 drinks   |            |            |
-|            | per week)                   |            |            |
-+------------+-----------------------------+------------+------------+
++-------------+-------------------------+-------------+-------------+
+| Q u e s t i | Question                | A s k e d o | Y ea r( s)  |
+| o n i d     |                         | f . . .     |             |
++=============+=========================+=============+=============+
+| \           |                         | c o m p u t | 20 15       |
+| \           |                         | e d         |             |
+| \_ D R N K  |                         |             |             |
+| W K 1       |                         |             |             |
++-------------+-------------------------+-------------+-------------+
+| \           | Binge drinkers (males   | c o m p u t | 20 15 , 20  |
+| \           | having five or more     | e d         | 18          |
+| \_ R F B I  | drinks on one occasion, |             |             |
+| N G 5       | females having four or  |             |             |
+|             | more drinks on one      |             |             |
+|             | occasion)               |             |             |
++-------------+-------------------------+-------------+-------------+
+| \           | Heavy drinkers (adult   | c o m p u t | 2 01 5, 2   |
+| \           | men having more than 14 | e d         | 01 6, 20 17 |
+| \_ R F D R  | drinks per week and     |             |             |
+| H V 5       | adult women having more |             |             |
+|             | than 7 drinks per week) |             |             |
++-------------+-------------------------+-------------+-------------+
+| \           | Heavy drinkers (adult   | c o m p u t | 20 18       |
+| \           | men having more than 14 | e d         |             |
+| \_ R F D R  | drinks per week and     |             |             |
+| H V 6       | adult women having more |             |             |
+|             | than 7 drinks per week) |             |             |
++-------------+-------------------------+-------------+-------------+
 
 +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
