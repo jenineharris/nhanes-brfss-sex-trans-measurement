@@ -15,41 +15,41 @@ knitr::opts_chunk$set(echo = FALSE, results = FALSE, message = FALSE,
 ```
 
 ```{r eval = FALSE}
-# # remove the eval = FALSE to run
-# # TO CREATE ANALYTIC DATA SET, UNCOMMENT AND RUN THIS CODE CHUNK
-# # bring in files from online BRFSS 2015 to 2018 data
-# library(haven)
-# # #
-# # #
-# # # # 2015 data
-#   temp <- tempfile(fileext = ".zip")
-#   download.file(url  = "https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip", destfile = temp)
-#   BRFSS_2015 <- read_xpt(file = temp)
-# # #
-# # # 2016 data
-#  temp <- tempfile(fileext = ".zip")
-#  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2016/files/LLCP2016XPT.zip", destfile = temp)
-#  BRFSS_2016 <- read_xpt(file = temp)
+# remove the eval = FALSE to run
+# TO CREATE ANALYTIC DATA SET, UNCOMMENT AND RUN THIS CODE CHUNK
+# bring in files from online BRFSS 2015 to 2018 data
+library(haven)
 # #
-# # # 2017 data
-#  temp <- tempfile(fileext = ".zip")
-#  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2017/files/LLCP2017XPT.zip", destfile = temp)
-#  BRFSS_2017 <- read_xpt(file = temp)
 # #
-# # 2018 data
-# temp <- tempfile(fileext = ".zip")
-# download.file(url  = "https://www.cdc.gov/brfss/annual_data/2018/files/LLCP2018XPT.zip", destfile = temp)
-# BRFSS_2018 <- read_xpt(file = temp)
-# 
-# # 2019 data
-# temp <- tempfile(fileext = ".zip")
-# download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
-# BRFSS_2019 <- read_xpt(file = temp)
-# 
-# # 2020 data
-# temp <- tempfile(fileext = ".zip")
-# download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020XPT.zip", destfile = temp)
-# BRFSS_2020 <- read_xpt(file = temp)
+# # # 2015 data
+  temp <- tempfile(fileext = ".zip")
+  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip", destfile = temp)
+  BRFSS_2015 <- read_xpt(file = temp)
+# #
+# # 2016 data
+ temp <- tempfile(fileext = ".zip")
+ download.file(url  = "https://www.cdc.gov/brfss/annual_data/2016/files/LLCP2016XPT.zip", destfile = temp)
+ BRFSS_2016 <- read_xpt(file = temp)
+#
+# # 2017 data
+ temp <- tempfile(fileext = ".zip")
+ download.file(url  = "https://www.cdc.gov/brfss/annual_data/2017/files/LLCP2017XPT.zip", destfile = temp)
+ BRFSS_2017 <- read_xpt(file = temp)
+#
+# 2018 data
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2018/files/LLCP2018XPT.zip", destfile = temp)
+BRFSS_2018 <- read_xpt(file = temp)
+
+# 2019 data
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
+BRFSS_2019 <- read_xpt(file = temp)
+
+# 2020 data
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020XPT.zip", destfile = temp)
+BRFSS_2020 <- read_xpt(file = temp)
 ```
 
 ```{r eval = FALSE}
@@ -119,6 +119,11 @@ library(tidyverse)
 ```
 
 ```{r}
+
+```
+
+
+```{r}
 BRFSS_all <- read.csv("brfss_all.csv")
 # add labels
 BRFSS_all_clean <- BRFSS_all %>% 
@@ -135,12 +140,11 @@ BRFSS_all_clean <- BRFSS_all %>%
    filter(TRNSGNDR %in% c("Trans male-to-female",
                           "Trans female-to-male")) %>% 
   mutate(yearLong = recode_factor(year,
-                              '2015' = '2015: Indicate sex of respondent.',
-                              '2016' = '2016: Indicate sex of respondent.',
-                              '2017' = '2017: Indicate sex of respondent.',
-                              '2018' = '2018: What is
-your sex? or What was your sex at birth? Was it...',
-                              '2019' = '2019: Are you male or female?',
+                              '2015' = '2015: Indicate sex of respondent. Ask only if necessary.',
+                              '2016' = '2016: Are you... (Male, Female, Refused)',
+                              '2017' = '2017: Indicate sex of respondent. Or, Are you male or female?',
+                              '2018' = '2018: What is your sex? or What was your sex at birth? Was it...',
+                              '2019' = '2019: Are you male or female? or What was your sex at birth? Was it male or female?',
 '2020' = '2020: What was your sex at birth? Was it male or female?')) %>% 
   drop_na() %>% 
    droplevels()
@@ -161,28 +165,24 @@ health outcomes [@legato2016consideration; @agenor2016sexual;
 @gonzales2016comparison; @mcclure2022gender].
 
 Conducting research to understand factors that influence health, health
-care, and health outcomes is an important part of social science and
-medical research. Given the roles of sex, sexual orientation, and gender
-identity in health, many social science and medical surveys seek to
-measure sex and a growing number also collect sexual orientation and
+care, and health outcomes is important for the development of policy and programs that protect and improve health. Given the roles of sex, sexual orientation, and gender
+identity in health, many social science and health surveys seek to
+measure sex, and a growing number also collect sexual orientation and
 gender identity information. Until recently, measurement of gender
 identity was unusual and measurement of sex was often done by an
 interviewer recording the sex they thought the participant was based on
 voice or other physical cues [@bauer2017transgender] or asking "what is
-your sex?" and recording either male or female. In addition to these
-inaccurate ways of recording sex [@bauer2017transgender], researchers
+your sex?" and recording either male or female. In addition, researchers
 have frequently treated gender as a synonym for sex
 [@krieger2003genders; @johnson2009better; @tate2013two].
 
-For decades there have been calls to improve the measurement of sex,
-gender, and sexual orientation and attempts to identify accurate ways of
-measuring these characteristics [@krieger2003genders; @tate2013two]. In
+For decades there have been calls and attempts to improve the measurement of sex,
+gender, and sexual orientation [@krieger2003genders; @tate2013two]. In
 the meantime, researchers are utilizing data sets that include less
 accurate ways of measuring these concepts. For example, the Behavioral
-Risk Factor Surveillance Survey (BRFSS) collects data on risk behaviors,
+Risk Factor Surveillance Survey (BRFSS) collects data on health behaviors,
 health conditions, and the use of health-related services from U.S
-residents. Respondent data is collected each month over telephone to be
-aggregated and assessed by the CDC. It is considered the world's largest
+residents. The Centers for Disease Control and Prevention collect BRFSS participant data  each month over telephone. It is considered the world's largest
 health survey system, collecting data from over 400,000 individuals
 yearly [@brfss].
 
@@ -199,14 +199,18 @@ Gender nonconforming?"
 Although a gender identity question was added, the wording of the sex
 question did not make any distinction between sex recorded and gender
 for several years. In 2015 to 2017, the interviewer selected the sex of
-the participant given the prompt: "Indicate sex of respondent." In 2018,
+the participant given the prompt: "Indicate sex of respondent. Ask only if necessary." In 2016, the prompt changed to, "Are you..." with the options of Male, Female, and Refused and a note, "Note: This may be populated from information derived from screening, household enumeration. However, interviewer should not make judgement on sex of respondent." 
+
+In 2017 the question remained, "Are you..." with responses of Male, Female, and Refused. The note for interviewers changed to, "INTERVIEWER NOTE: THIS QUESTION MUST BE ASKED EVEN IF INTERVIEWER HAD PREVIOUSLY ENTERED SEX IN THE SCREENING QUESTIONS. IT WILL NOT BE ASKED OF PERSONS WHO HAVE SELF-IDENTIFIED SEX IN LL HOUSEHOLD ENUMERATION." and a second note, "CATI NOTE: THISQUESTION MAY BE POPULATED BY LANDLINE HOUSEHOLD ENUMERATION ONLY. IT MAY NOT BE POPULATED BY INTERVIEWER ASSIGNMENT OF SEX DURING THE SCREENING FOR CELL PHONE OR PERSONS LIVING IN COLLEGE HOUSING."
+
+In 2018,
 the interviewer asked, "What is your sex? or What was your sex at birth?
-Was it..." and gave the possible responses of male and female. In 2019,
-the interviewer asked, "Are you male or female?". In 2019 there was a
+Was it..." and gave the possible responses of Male and Female. It is unclear from the BRFSS documentation how interviewers selected one of the two questions. In 2019,
+the interviewer asked, "Are you male or female?". In 2019 there was also a
 separate "Sex at Birth Optional Module" that included the question,
-"What was your sex at birth? Was it male or female?" In the 2020 survey
-administration, the optional module sex at birth prompt was used as the
-sex question, "What was your sex at birth? Was it male or female?"
+"What was your sex at birth? Was it male or female?" The separate sex at birth question was asked of a subset of about 65 thousand participants and a combined sex variable was created that classified people based on their response to the sex at birth question if asked and, if sex at birth was not asked or if the reply was "Don't know/Not Sure" or "Refused," used the response to the sex question. In the 2020 survey
+administration, the 2019 sex at birth prompt was adopted as the
+sex question for all participants, "What was your sex at birth? Was it male or female?"
 
 In a recent paper [@howerton2021], Howerton and Harris found that BRFSS
 participants from 2015 to 2019 who reported having the same transgender
@@ -240,9 +244,9 @@ Specifically we answer three questions: (1) What is the relationship
 between sex and gender identity responses for participants over this six
 year period?; (2) How has the relationship between measured sex and
 gender identity changed as the sex question changed over this six year
-period?; and (3) Did the 2020 version of the question that specified "at
+period?; and (3) Did the versions of the question that specified "at
 birth" result in different patterns of sex and gender identity reporting
-compared to previous years?
+compared to other years?
 
 ### Methods
 
@@ -309,7 +313,7 @@ BRFSS_all_clean %>%
 
 ```
 
-##### Did the 2018 and 2020 versions of the question that specified "at birth" result in different patterns of sex and gender identity reporting compared to previous years?
+##### Did the versions of the question that specified "at birth" result in different patterns of sex and gender identity reporting compared to other years?
 
 For the transgender male-to-female group, the 2018 and 2020 had a slightly different pattern of responses compared to the years just before these (more in line with the 2015 responses), with more participants selecting male sex in 2018 than in 2017 and in 2020 compared to 2019. For the transgender female-to-male group, the 2018 question also resulted in more participants choosing male sex than previous years. This small change was maintained in 2019 but there was a slight increase in female sex responses in 2020. The "at birth" wording appears to have had more of an impact on participants identifying as male-to-female transgender than on those identifying as female-to-male transgender.
 
