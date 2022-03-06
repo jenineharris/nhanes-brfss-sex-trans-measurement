@@ -257,19 +257,11 @@ statistics [@table1].
 
 ### Results
 
-```{r}
-# basic table exploring data
-table(trans = BRFSS_all_clean$TRNSGNDR, sex = BRFSS_all_clean$SEX, year = BRFSS_all_clean$year)
+##### What is the relationship between sex and gender identity responses for participants over this six year period?
 
-library(table1)
+The majority of those who reported being male-to-female transgender also reported their sex as male (Figure 1). Likewise, the majority of those who reported being female-to-male transgender reported their sex as female. With the exception of 2017, there was a higher percentage of male-to-female transgender participants reporting themselves to be male sex compared to the percentage of female-to-male transgender participants reporting themselves to be female.
 
-table1(~ year | TRNSGNDR * SEX, data = BRFSS_all_clean)
-
-prop.table(table(trans = BRFSS_all_clean$TRNSGNDR,
-                 sex = BRFSS_all_clean$SEX,
-                 year = BRFSS_all_clean$year),
-           margin = 2)
-```
+*Figure 1. Distribution of reported sex among BRFSS participants who reported being transgender (2015-2020).*
 
 ```{r}
 BRFSS_all_clean %>% 
@@ -290,6 +282,52 @@ BRFSS_all_clean %>%
        fill = "Sex category")  
 
 ```
+
+##### How has the relationship between measured sex and gender identity changed as the sex question changed over this six year period?
+
+Although the sex question asked of participants changed multiple times from 2015 to 2020, the percentage in each transgender group choosing male and female did not change notably for either group (Figure 2). 
+
+```{r}
+BRFSS_all_clean %>% 
+  drop_na() %>% 
+  mutate(year = as.numeric(as.character(year))) %>% 
+  group_by(TRNSGNDR, SEX, year) %>% 
+  count() %>% 
+  group_by(TRNSGNDR, year) %>% 
+  mutate(percYear = 100 * n / sum(n)) %>% 
+  ggplot(aes(color = SEX, x = year, y = percYear)) +
+  geom_path() +
+  geom_point() +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  facet_wrap(~TRNSGNDR, nrow = 2) +
+  scale_color_manual(values = c("gray60", "black")) +
+  theme_minimal() +
+  labs(x = "Year", y = "Percent in each sex category",
+       color = "Sex category")  + 
+  scale_x_continuous(labels=c("2015","2016","2017", "2018", "2019","2020")) +
+  ylim(c(0,100))
+
+```
+
+##### Did the 2018 and 2020 versions of the question that specified "at birth" result in different patterns of sex and gender identity reporting compared to previous years?
+
+For the transgender male-to-female group, the 2018 and 2020 had a slightly different pattern of responses compared to the years just before these (more in line with the 2015 responses), with more participants selecting male sex in 2018 than in 2017 and in 2020 compared to 2019. For the transgender female-to-male group, the 2018 question also resulted in more participants choosing male sex than previous years. This small change was maintained in 2019 but there was a slight increase in female sex responses in 2020. The "at birth" wording appears to have had more of an impact on participants identifying as male-to-female transgender than on those identifying as female-to-male transgender.
+
+### Discussion
+
+We found that about 75% of participants in the 2015 to 2020 BRFSS who identify as transgender male-to-female report male sex while about 25% report female sex. For participants during the same time frame who identify as transgender female-to-male report female sex a little over 60% of the time and report male sex just under 40% of the time. These values were relatively consistent over the six administrations of the survey despite multiple changes in how the sex question was worded. The value of the sex variable is used in computing some variables and in routing participants to questions about cancer screenings and other preventive health behaviors. In order to better understand and protect the health of transgender people, accurate measurement of sex would be useful.
+
+
+
+
+
+```{r}
+# basic table exploring data
+library(table1)
+table1(~ year | TRNSGNDR * SEX, data = BRFSS_all_clean)
+```
+
+
 
 ```{r}
 library(descr)
