@@ -118,7 +118,7 @@ BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
 ```
 
 ```{r}
-#BRFSS_all <- read.csv("brfss_all.csv")
+BRFSS_all <- read.csv("brfss_all.csv")
 # add labels
 BRFSS_all_clean <- BRFSS_all %>% 
    mutate(SEX = recode_factor(SEX, 
@@ -152,40 +152,41 @@ varied by age group, with the youngest cohort, Generation Z born
 transgender compared to 1.2% in the previous cohort (Millenials) and
 just .3% in the cohort born before 1946 (Traditionalists). Transgender
 people are individuals whose biological sex, or sex assigned at birth,
-differs from their gender identity .(add cite:
-<https://www.teachingtransgender.org/terminology-sheet-free-resource/>)
-Gender identity is distinct from sex and sexual orientation and consists
-of how one identifies and conceptualizes onself as a gendered being
-along a spectrum of male, female. Some individuals identify as both or neither 
-male or female because they are not considered inclusive enough to comprise 
-the range gender experiences. Gender identity refers to felt sense of self (Tate).
-It is often perceived outwardly through observable presentation
-that reflects internal identity, such as through behavior or appearance.
-Alternately, sexual orientation describes external physical, emotional,
-and sexual attraction toward others. add cite:
-(<https://www.teachingtransgender.org/terminology-sheet-free-resource/>).
-It is important to note that sexual orientation is independent of sex
-and gender and not synonymous but nevertheless linked. Life experiences and
-how one is perceived socially is influenced by the presence of secondary sex 
-characteristics. This in mind, questions regarding sex and gender are implicitly
-receiving both biological and social information, or secondary sex 
-characteristics and gender sentiment (Johnson). 
+differs from their gender identity \[@krieger2003\]. Gender identity is
+distinct from sex and sexual orientation and consists of how one
+identifies and conceptualizes onself as a gendered being along a
+spectrum of male, female. Some individuals identify as both or neither
+male or female because they are not considered inclusive enough to
+comprise the range gender experiences. Gender identity refers to felt
+sense of self (Tate). It is often perceived outwardly through observable
+presentation that reflects internal identity, such as through behavior
+or appearance. Alternately, sexual orientation describes external
+physical, emotional, and sexual attraction toward others.
+\[@krieger2003\]. It is important to note that sexual orientation is
+independent of sex and gender and not synonymous but nevertheless
+linked. Life experiences and how one is perceived socially is influenced
+by the presence of secondary sex characteristics. This in mind,
+questions regarding sex and gender are implicitly receiving both
+biological and social information, or secondary sex characteristics and
+gender sentiment (Johnson).
 
-Both social science and medical research request sex and gender information to 
-include in analysis. However, definitions have been found to vary across
-disciplines (Bauer). Queries to ascertain  dimensions of sex and gender depend 
-on the intended outcome specific to the research question (Bauer). For example,
-surveys might erroneously utilize "gender" when explaining biological differences
-rather than sex (Johnson). Sex and gender measures have developed from early
-conventions of assumption recording in telephone and in-person surveys to single
-item questions, neither of which are capable of fully assessing sex and gender 
-(Bauer). Today, most methods of recording sex and gender in large scale medical 
-and public health surveys feature some variation of a two-item question, 
-check-all-that-apply, or write-in response. Although these methods are more 
-robust in assessing sex and gender among participants, there are still
-numerous elements of sex that are more difficult to determine from queries
-such as physiology, genes, and hormones. This is also the case with elements of
-gender, like ascribed and perceived gender roles (Johnson).
+Both social science and medical research request sex and gender
+information to include in analysis. However, definitions have been found
+to vary across disciplines [@bauer2017]. Queries to ascertain dimensions
+of sex and gender depend on the intended outcome specific to the
+research question (Bauer). For example, surveys might erroneously
+utilize "gender" when explaining biological differences rather than sex
+[@johnson2009]. Sex and gender measures have developed from early
+conventions of assumption recording in telephone and in-person surveys
+to single item questions, neither of which are capable of fully
+assessing sex and gender [@bauer2017\]. Today, most methods of recording
+sex and gender in large scale medical and public health surveys feature
+some variation of a two-item question, check-all-that-apply, or write-in
+response. Although these methods are more robust in assessing sex and
+gender among participants, there are still numerous elements of sex that
+are more difficult to determine from queries such as physiology, genes,
+and hormones. This is also the case with elements of gender, like
+ascribed and perceived gender roles \[@johnson2009].
 
 The Behavioral Risk Factor Surveillance Survey (BRFSS) collects data on
 risk behaviors, health conditions, and the use of health-related
@@ -194,7 +195,7 @@ over telephone to be aggregated and assessed by the CDC. It is
 considered the world's largest health survey system, collecting data
 from over 400,000 individuals yearly [@brfss].
 
-Until 2015, the Behavioral Risk Factor Surveillance Survey (BRFSS) did
+Until 2015, the Behavioral Risk Factor Surveillance Survey [@brfss] did
 not ask participants about gender identity. In 2015 the BRFSS added an
 optional question about gender identity to the survey and states could
 decide whether or not to include the gender identity question when
@@ -221,8 +222,8 @@ reported their sex to be female.
 
 Scientific research on transgender healthcare is underdeveloped and the
 role of sex recorded at birth in health and healthcare remains unclear
-for transgender people [citations needed see alcohol literature and
-screening literature]. However, sex recorded at birth is a risk factor
+for transgender people \[citations needed see alcohol literature and
+screening literature\]. However, sex recorded at birth is a risk factor
 for numerous types of cancer and other health outcomes. In order to
 better understand the role of sex recorded at birth in health and health
 outcomes for transgender people, it may be useful to understand how to
@@ -267,62 +268,59 @@ BRFSS_all_clean %>%
   scale_fill_brewer(palette = "Set2") +
   theme_minimal() +
   labs(x = "Gender identity", y = "Percent in each sex category",
-       fill = "Sex category")  
+       fill = "Sex category") 
+
+BRFSS_all_clean %>% 
+  drop_na() %>% 
+  group_by(TRNSGNDR, SEX, yearLong) %>% 
+  count() %>% 
+  group_by(SEX, yearLong) %>% 
+  mutate(percYear = 100 * n / sum(n)) %>% 
+  ggplot(aes(x = SEX, fill = TRNSGNDR, y = percYear)) +
+  geom_col(position = "dodge") +
+  #coord_flip() +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  facet_wrap(~yearLong, 
+             labeller = label_wrap_gen(20)) +
+  scale_fill_brewer(palette = "Set1") +
+  theme_minimal() +
+  labs(x = "Sex category", y = "Percent in each sex category",
+       fill = "Gender identity")  
 
 ```
 
-+---+--------------------------------------------------------+---+----+
-| Q | Question                                               | A | Y  |
-| u |                                                        | s | ea |
-| e |                                                        | k | r( |
-| s |                                                        | e | s) |
-| t |                                                        | d |    |
-| i |                                                        | o |    |
-| o |                                                        | f |    |
-| n |                                                        | . |    |
-| i |                                                        | . |    |
-| d |                                                        | . |    |
-+===+========================================================+===+====+
-| \ |                                                        | c | 20 |
-| _ |                                                        | o | 15 |
-| D |                                                        | m |    |
-| R |                                                        | p |    |
-| N |                                                        | u |    |
-| K |                                                        | t |    |
-| W |                                                        | e |    |
-| K |                                                        | d |    |
-| 1 |                                                        |   |    |
-+---+--------------------------------------------------------+---+----+
-| \ | Binge drinkers (males having five or more drinks on    | c | 20 |
-| _ | one occasion, females having four or more drinks on    | o | 15 |
-| R | one occasion)                                          | m | ,  |
-| F |                                                        | p | 20 |
-| B |                                                        | u | 18 |
-| I |                                                        | t |    |
-| N |                                                        | e |    |
-| G |                                                        | d |    |
-| 5 |                                                        |   |    |
-+---+--------------------------------------------------------+---+----+
-| \ | Heavy drinkers (adult men having more than 14 drinks   | c | 2  |
-| _ | per week and adult women having more than 7 drinks per | o | 01 |
-| R | week)                                                  | m | 5, |
-| F |                                                        | p | 2  |
-| D |                                                        | u | 01 |
-| R |                                                        | t | 6, |
-| H |                                                        | e | 20 |
-| V |                                                        | d | 17 |
-| 5 |                                                        |   |    |
-+---+--------------------------------------------------------+---+----+
-| \ | Heavy drinkers (adult men having more than 14 drinks   | c | 20 |
-| _ | per week and adult women having more than 7 drinks per | o | 18 |
-| R | week)                                                  | m |    |
-| F |                                                        | p |    |
-| D |                                                        | u |    |
-| R |                                                        | t |    |
-| H |                                                        | e |    |
-| V |                                                        | d |    |
-| 6 |                                                        |   |    |
-+---+--------------------------------------------------------+---+----+
++------+---------------------------------------------+------+------+
+| Q u  | Question                                    | A s  | Y ea |
+| e s  |                                             | k e  | r(   |
+| t i  |                                             | d o  | s)   |
+| o n  |                                             | f .  |      |
+| i d  |                                             | . .  |      |
++======+=============================================+======+======+
+| \    |                                             | c o  | 20   |
+| \_ D |                                             | m p  | 15   |
+| R N  |                                             | u t  |      |
+| K W  |                                             | e d  |      |
+| K 1  |                                             |      |      |
++------+---------------------------------------------+------+------+
+| \    | Binge drinkers (males having five or more   | c o  | 20   |
+| \_ R | drinks on one occasion, females having four | m p  | 15 , |
+| F B  | or more drinks on one occasion)             | u t  | 20   |
+| I N  |                                             | e d  | 18   |
+| G 5  |                                             |      |      |
++------+---------------------------------------------+------+------+
+| \    | Heavy drinkers (adult men having more than  | c o  | 2 01 |
+| \_ R | 14 drinks per week and adult women having   | m p  | 5, 2 |
+| F D  | more than 7 drinks per week)                | u t  | 01   |
+| R H  |                                             | e d  | 6,   |
+| V 5  |                                             |      | 20   |
+|      |                                             |      | 17   |
++------+---------------------------------------------+------+------+
+| \    | Heavy drinkers (adult men having more than  | c o  | 20   |
+| \_ R | 14 drinks per week and adult women having   | m p  | 18   |
+| F D  | more than 7 drinks per week)                | u t  |      |
+| R H  |                                             | e d  |      |
+| V 6  |                                             |      |      |
++------+---------------------------------------------+------+------+
 
 +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -436,4 +434,3 @@ the past two years? \| female \| 2018 \|
 the past two years? \| female \| 2018 \|
 +-------------+---------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------+-------------+------------------+
-
