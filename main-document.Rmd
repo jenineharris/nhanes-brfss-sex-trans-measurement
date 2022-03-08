@@ -152,7 +152,7 @@ varied by age group, with the youngest cohort, Generation Z born
 transgender compared to 1.2% in the previous cohort (Millenials) and
 just .3% in the cohort born before 1946 (Traditionalists). Transgender
 people are individuals whose biological sex, or sex assigned at birth,
-differs from their gender identity \[@krieger2003\]. Gender identity is
+differs from their gender identity [@krieger2003]. Gender identity is
 distinct from sex and sexual orientation and consists of how one
 identifies and conceptualizes onself as a gendered being along a
 spectrum of male, female. Some individuals identify as both or neither
@@ -162,19 +162,19 @@ sense of self (Tate). It is often perceived outwardly through observable
 presentation that reflects internal identity, such as through behavior
 or appearance. Alternately, sexual orientation describes external
 physical, emotional, and sexual attraction toward others.
-\[@krieger2003\]. It is important to note that sexual orientation is
+[@krieger2003]. It is important to note that sexual orientation is
 independent of sex and gender and not synonymous but nevertheless
 linked. Life experiences and how one is perceived socially is influenced
 by the presence of secondary sex characteristics. This in mind,
 questions regarding sex and gender are implicitly receiving both
 biological and social information, or secondary sex characteristics and
-gender sentiment (Johnson).
+gender sentiment [@johnson2009].
 
 Both social science and medical research request sex and gender
 information to include in analysis. However, definitions have been found
 to vary across disciplines [@bauer2017]. Queries to ascertain dimensions
 of sex and gender depend on the intended outcome specific to the
-research question (Bauer). For example, surveys might erroneously
+research question [@bauer2017]. For example, surveys might erroneously
 utilize "gender" when explaining biological differences rather than sex
 [@johnson2009]. Sex and gender measures have developed from early
 conventions of assumption recording in telephone and in-person surveys
@@ -289,38 +289,49 @@ BRFSS_all_clean %>%
 
 ```
 
-+------+---------------------------------------------+------+------+
-| Q u  | Question                                    | A s  | Y ea |
-| e s  |                                             | k e  | r(   |
-| t i  |                                             | d o  | s)   |
-| o n  |                                             | f .  |      |
-| i d  |                                             | . .  |      |
-+======+=============================================+======+======+
-| \    |                                             | c o  | 20   |
-| \_ D |                                             | m p  | 15   |
-| R N  |                                             | u t  |      |
-| K W  |                                             | e d  |      |
-| K 1  |                                             |      |      |
-+------+---------------------------------------------+------+------+
-| \    | Binge drinkers (males having five or more   | c o  | 20   |
-| \_ R | drinks on one occasion, females having four | m p  | 15 , |
-| F B  | or more drinks on one occasion)             | u t  | 20   |
-| I N  |                                             | e d  | 18   |
-| G 5  |                                             |      |      |
-+------+---------------------------------------------+------+------+
-| \    | Heavy drinkers (adult men having more than  | c o  | 2 01 |
-| \_ R | 14 drinks per week and adult women having   | m p  | 5, 2 |
-| F D  | more than 7 drinks per week)                | u t  | 01   |
-| R H  |                                             | e d  | 6,   |
-| V 5  |                                             |      | 20   |
-|      |                                             |      | 17   |
-+------+---------------------------------------------+------+------+
-| \    | Heavy drinkers (adult men having more than  | c o  | 20   |
-| \_ R | 14 drinks per week and adult women having   | m p  | 18   |
-| F D  | more than 7 drinks per week)                | u t  |      |
-| R H  |                                             | e d  |      |
-| V 6  |                                             |      |      |
-+------+---------------------------------------------+------+------+
+```{r}
+#line chart with sex and gender over time
+BRFSS_all_clean %>% 
+  drop_na() %>% 
+  group_by(TRNSGNDR, SEX, year) %>% 
+  count() %>% 
+  group_by(SEX, year) %>% 
+  mutate(percYear = 100 * n / sum(n)) %>% 
+  ggplot(aes(x=year, y=percYear))+
+  geom_point(aes(shape=factor(SEX), color= factor(TRNSGNDR)))+
+  geom_line(aes(linetype=SEX, color=TRNSGNDR))+
+    labs(x="Year",
+       y="Percent Respondants",title="BRFSS Sex and Transgender Responses, 2015-2020")
+```
+
+
++----------+-----------------------------+----------+----------+
+| Q u e s  | Question                    | A s k e  | Y ea r(  |
+| t i o n  |                             | d o f .  | s)       |
+| i d      |                             | . .      |          |
++==========+=============================+==========+==========+
+| \        |                             | c o m p  | 20 15    |
+| \_ D R N |                             | u t e d  |          |
+| K W K 1  |                             |          |          |
++----------+-----------------------------+----------+----------+
+| \        | Binge drinkers (males       | c o m p  | 20 15 ,  |
+| \_ R F B | having five or more drinks  | u t e d  | 20 18    |
+| I N G 5  | on one occasion, females    |          |          |
+|          | having four or more drinks  |          |          |
+|          | on one occasion)            |          |          |
++----------+-----------------------------+----------+----------+
+| \        | Heavy drinkers (adult men   | c o m p  | 2 01 5,  |
+| \_ R F D | having more than 14 drinks  | u t e d  | 2 01 6,  |
+| R H V 5  | per week and adult women    |          | 20 17    |
+|          | having more than 7 drinks   |          |          |
+|          | per week)                   |          |          |
++----------+-----------------------------+----------+----------+
+| \        | Heavy drinkers (adult men   | c o m p  | 20 18    |
+| \_ R F D | having more than 14 drinks  | u t e d  |          |
+| R H V 6  | per week and adult women    |          |          |
+|          | having more than 7 drinks   |          |          |
+|          | per week)                   |          |          |
++----------+-----------------------------+----------+----------+
 
 +-------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 +-------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
