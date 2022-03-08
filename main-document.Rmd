@@ -198,10 +198,10 @@ Gender nonconforming?"
 
 Although a gender identity question was added, the wording of the sex
 question did not make any distinction between sex recorded and gender
-for several years. In 2015 to 2017, the interviewer selected the sex of
-the participant given the prompt: "Indicate sex of respondent. Ask only if necessary." In 2016, the prompt changed to, "Are you..." with the options of Male, Female, and Refused and a note, "Note: This may be populated from information derived from screening, household enumeration. However, interviewer should not make judgement on sex of respondent." 
+for several years. In 2015, the interviewer selected the sex of
+the participant given the prompt: "Indicate sex of respondent. Ask only if necessary." In 2016, the prompt changed to, "Are you..." with the options of Male, Female, and Refused and a note, "Note: This may be populated from information derived from screening, household enumeration. However, interviewer should not make judgement on sex of respondent." So, 2016 was the first year of the BRFSS that the interviewer was not permitted to guess the sex of the participant.
 
-In 2017 the question remained, "Are you..." with responses of Male, Female, and Refused. The note for interviewers changed to, "INTERVIEWER NOTE: THIS QUESTION MUST BE ASKED EVEN IF INTERVIEWER HAD PREVIOUSLY ENTERED SEX IN THE SCREENING QUESTIONS. IT WILL NOT BE ASKED OF PERSONS WHO HAVE SELF-IDENTIFIED SEX IN LL HOUSEHOLD ENUMERATION." and a second note, "CATI NOTE: THISQUESTION MAY BE POPULATED BY LANDLINE HOUSEHOLD ENUMERATION ONLY. IT MAY NOT BE POPULATED BY INTERVIEWER ASSIGNMENT OF SEX DURING THE SCREENING FOR CELL PHONE OR PERSONS LIVING IN COLLEGE HOUSING."
+In 2017 the question remained, "Are you..." with responses of Male, Female, and Refused. The note for interviewers changed to all capital letters, presumably for emphasis, "INTERVIEWER NOTE: THIS QUESTION MUST BE ASKED EVEN IF INTERVIEWER HAD PREVIOUSLY ENTERED SEX IN THE SCREENING QUESTIONS. IT WILL NOT BE ASKED OF PERSONS WHO HAVE SELF-IDENTIFIED SEX IN LL HOUSEHOLD ENUMERATION." There was also a second note, "CATI NOTE: THIS QUESTION MAY BE POPULATED BY LANDLINE HOUSEHOLD ENUMERATION ONLY. IT MAY NOT BE POPULATED BY INTERVIEWER ASSIGNMENT OF SEX DURING THE SCREENING FOR CELL PHONE OR PERSONS LIVING IN COLLEGE HOUSING."
 
 In 2018,
 the interviewer asked, "What is your sex? or What was your sex at birth?
@@ -214,13 +214,13 @@ sex question for all participants, "What was your sex at birth? Was it male or f
 
 In a recent paper [@howerton2021], Howerton and Harris found that BRFSS
 participants from 2015 to 2019 who reported having the same transgender
-gender identity had different answers for the sex question. For example,
+gender identity sometimes had different answers for the sex question. For example,
 some participants who identified as female-to-male transgender identity
 reported their sex as male and others reported their sex as female.
 Likewise, among those who identified as male-to-female transgender
 identity, some reported their sex to be male and others reported their
 sex to be female. This has likely led to numerous published scientific
-papers examining sex differences and potentially including participants
+papers examining sex differences or using sex as a covariate and potentially including participants
 whose sex recorded at birth was something other than their sex as
 recorded in the BRFSS.
 
@@ -231,14 +231,14 @@ male as a heavy drinker at 14 or more alcoholic drinks per week and a
 female as a heavy drinker at 7 or more alcoholic drinks per week.
 Questions related to pregnancy and pregnancy or birth-related health
 conditions are only asked of those who report being female and questions
-about birth control type and behavior differ for those who select male
-or female sex. Likewise, questions about mammograms, breast exams, human
-papilloma virus (HPV) screening and vaccination, and prostate specific
+about human
+papilloma virus (HPV) screening and vaccination and birth control type and behavior differ for those who select male
+or female sex. Likewise, questions about mammograms, breast exams, and prostate specific
 antigen tests are only asked of people who report being in a specific
 sex category.
 
 We sought to better understand the relationship between sex and gender
-identity in the BRFSS data from 2015 (the first year of the gender
+identity responses in the BRFSS data from 2015 (the first year of the gender
 identity question) to the most recently released year of data in 2020.
 Specifically we answer three questions: (1) What is the relationship
 between sex and gender identity responses for participants over this six
@@ -315,7 +315,106 @@ BRFSS_all_clean %>%
 
 ##### Did the versions of the question that specified "at birth" result in different patterns of sex and gender identity reporting compared to other years?
 
-For the transgender male-to-female group, the 2018 and 2020 had a slightly different pattern of responses compared to the years just before these (more in line with the 2015 responses), with more participants selecting male sex in 2018 than in 2017 and in 2020 compared to 2019. For the transgender female-to-male group, the 2018 question also resulted in more participants choosing male sex than previous years. This small change was maintained in 2019 but there was a slight increase in female sex responses in 2020. The "at birth" wording appears to have had more of an impact on participants identifying as male-to-female transgender than on those identifying as female-to-male transgender.
+For the transgender male-to-female group, the 2018 and 2020 had a slightly different pattern of responses compared to the years just before these (more in line with the 2015 responses), with more participants selecting male sex in 2018 than in 2017 and in 2020 compared to 2019. For the transgender female-to-male group, 2018 question also marked a shift in responses with more participants choosing male sex than previous years. This small change was maintained in 2019 but there was a slight increase in female sex responses in 2020. The "at birth" wording appears to have had more of an impact on participants identifying as male-to-female transgender than on those identifying as female-to-male transgender. It is notable that, for both of the transgender groups (female-to-male and male-to-female) there was an increase in selection of male in response to the sex question in 2018. 
+
+The structure of the 2019 survey provides some additional information about differences in response patterns when including or not including "at birth" in a sex question. In 2019, there was more variability in responses among participants who were asked their sex (A) compared to participants who were asked their sex at birth (B). However, when compared to 2020, the 
+
+```{r}
+BRFSS_2019_clean <- BRFSS_2019 %>% 
+  mutate(SEXVAR = recode_factor(SEXVAR,
+                                '1' = 'male',
+                                '2' = 'female')) %>% 
+  mutate(BIRTHSEX = recode_factor(BIRTHSEX,
+                                '1' = 'male',
+                                '2' = 'female',
+                                '7' = NA_character_,
+                                '9' = NA_character_)) %>% 
+  mutate(TRNSGNDR = recode_factor(TRNSGNDR,
+                                   '1' = 'Trans male-to-female',
+                                   '2' = 'Trans female-to-male',
+                                   '3' = 'Trans gender nonconforming',
+                                   '4' = "No",
+                                   '7' = NA_character_,
+                                   '9' = NA_character_))
+
+table(BRFSS_2019_clean$SEXVAR, BRFSS_2019_clean$BIRTHSEX)
+table(BRFSS_2019_clean$TRNSGNDR, BRFSS_2019_clean$BIRTHSEX)
+```
+```{r}
+library(cowplot)
+
+sexVar <- BRFSS_2019_clean %>% 
+  drop_na(TRNSGNDR, SEXVAR) %>% 
+  filter(TRNSGNDR != "No" & TRNSGNDR != "Trans gender nonconforming") %>% 
+  group_by(TRNSGNDR, SEXVAR) %>% 
+  count() %>% 
+  group_by(TRNSGNDR) %>% 
+  mutate(percSex = 100 * n / sum(n)) %>% 
+  ggplot(aes(x = TRNSGNDR, fill = SEXVAR, y = percSex)) +
+  geom_col(position = "dodge") +
+  #coord_flip() +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  # facet_wrap(~yearLong, 
+  #            labeller = label_wrap_gen(20)) +
+  scale_fill_manual(values = c("gray60", "black")) +
+  theme_minimal() +
+  labs(x = "Gender identity", y = "Percent in each\ntransgender category (sex)",
+       fill = "Sex category")  +
+  ylim(c(0, 100))
+
+sexAtBirthVar <- BRFSS_2019_clean %>% 
+  drop_na(TRNSGNDR, BIRTHSEX) %>% 
+  filter(TRNSGNDR != "No" & TRNSGNDR != "Trans gender nonconforming") %>% 
+  group_by(TRNSGNDR, BIRTHSEX) %>% 
+  count() %>% 
+  group_by(TRNSGNDR) %>% 
+  mutate(percSex = 100 * n / sum(n)) %>% 
+  ggplot(aes(x = TRNSGNDR, fill = BIRTHSEX, y = percSex)) +
+  geom_col(position = "dodge") +
+  #coord_flip() +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  # facet_wrap(~yearLong, 
+  #            labeller = label_wrap_gen(20)) +
+  scale_fill_manual(values = c("gray60", "black")) +
+  theme_minimal() +
+  labs(x = "Gender identity", y = "Percent in each\ntransgender category (sex at birth 2019)",
+       fill = "Sex category") +
+  ylim(c(0, 100))
+
+sexAtBirthVar2020 <- BRFSS_all_clean %>% 
+  filter(year == 2020) %>% 
+  drop_na(TRNSGNDR, SEX) %>% 
+  filter(TRNSGNDR != "No" & TRNSGNDR != "Trans gender nonconforming") %>% 
+  group_by(TRNSGNDR, SEX) %>% 
+  count() %>% 
+  group_by(TRNSGNDR) %>% 
+  mutate(percSex = 100 * n / sum(n)) %>% 
+  ggplot(aes(x = TRNSGNDR, fill = SEX, y = percSex)) +
+  geom_col(position = "dodge") +
+  #coord_flip() +
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  # facet_wrap(~yearLong, 
+  #            labeller = label_wrap_gen(20)) +
+  scale_fill_manual(values = c("gray60", "black")) +
+  theme_minimal() +
+  labs(x = "Gender identity", y = "Percent in each \ntransgender category (sex at birth 2020)",
+       fill = "Sex category") +
+  ylim(c(0, 100))
+
+legend <- get_legend(
+  # create some space to the left of the legend
+  sexVar +
+     guides(color = guide_legend(nrow = 1)) +
+    theme(legend.position = "bottom"))
+
+
+cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
+                   sexAtBirthVar + theme(legend.position = "none"),
+                   sexAtBirthVar2020 + theme(legend.position = "none"), nrow = 1,
+                   labels = c("A", "B", "C")),
+                   legend, ncol = 1, rel_heights = c(1,.1))
+```
+
 
 ### Discussion
 
