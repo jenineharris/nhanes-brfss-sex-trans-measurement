@@ -14,104 +14,104 @@ knitr::opts_chunk$set(echo = FALSE, results = FALSE, message = FALSE,
                       warning = FALSE)
 ```
 
-```{r eval = FALSE}
+```{r}
 # remove the eval = FALSE to run
 # TO CREATE ANALYTIC DATA SET, UNCOMMENT AND RUN THIS CODE CHUNK
 # bring in files from online BRFSS 2015 to 2018 data
 library(haven)
 # #
 # #
-# # # 2015 data
+# # 2015 data
   temp <- tempfile(fileext = ".zip")
   download.file(url  = "https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip", destfile = temp)
   BRFSS_2015 <- read_xpt(file = temp)
-# #
+# # #
 # # 2016 data
  temp <- tempfile(fileext = ".zip")
  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2016/files/LLCP2016XPT.zip", destfile = temp)
  BRFSS_2016 <- read_xpt(file = temp)
-#
-# # 2017 data
+# #
+# # # 2017 data
  temp <- tempfile(fileext = ".zip")
  download.file(url  = "https://www.cdc.gov/brfss/annual_data/2017/files/LLCP2017XPT.zip", destfile = temp)
  BRFSS_2017 <- read_xpt(file = temp)
-#
+# #
 # 2018 data
 temp <- tempfile(fileext = ".zip")
 download.file(url  = "https://www.cdc.gov/brfss/annual_data/2018/files/LLCP2018XPT.zip", destfile = temp)
 BRFSS_2018 <- read_xpt(file = temp)
-
-# 2019 data
+#
+# # 2019 data
 temp <- tempfile(fileext = ".zip")
 download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
 BRFSS_2019 <- read_xpt(file = temp)
-
+#
 # 2020 data
 temp <- tempfile(fileext = ".zip")
 download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020XPT.zip", destfile = temp)
 BRFSS_2020 <- read_xpt(file = temp)
 ```
 
-```{r eval = FALSE}
+```{r}
 # remove the eval = FALSE to run
 # # select only the variables to use in the analysis (e.g. changes 300+ variables to only needed for analysis)
 
 #
 library(tidyverse)
-#  BRFSS_2015 <- BRFSS_2015 %>%
-#    select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
-#           PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
-#           HPLSTTST, HADHYST2, PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1,
-#           PCPSARE1, PSATEST1, PSATIME, PCPSARS1, PCPSADE1, PCDMDECN,
-#           `_DRNKWEK`) %>%
-#     mutate(year = "2015")
+ BRFSS_2015 <- BRFSS_2015 %>%
+   select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
+          PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
+          HPLSTTST, HADHYST2, PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1,
+          PCPSARE1, PSATEST1, PSATIME, PCPSARS1, PCPSADE1, PCDMDECN,
+          `_DRNKWEK`) %>%
+    mutate(year = "2015")
+#
+ BRFSS_2016 <- BRFSS_2016 %>%
+   select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, HADMAM,
+          HOWLONG, HADPAP2, LASTPAP2, HPVTEST, HPLSTTST, HADHYST2,
+          PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, PCPSARE1, PSATEST1,
+          PSATIME, PCPSARS1, PCPSADE1, PCDMDECN, `_RFMAM2Y`, `_MAM5021`,
+          `_RFPAP33`, `_RFPSA21`)%>%
+    mutate(year = "2016")
+#
+ BRFSS_2017 <- BRFSS_2017 %>%
+   select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, PFPPRVN2,
+          TYPCNTR7, NOBCUSE6)%>%
+    mutate(year = "2017")
+#
+ BRFSS_2018 <- BRFSS_2018 %>%
+  select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)%>%
+    mutate(year = "2018")
 # #
-#  BRFSS_2016 <- BRFSS_2016 %>%
-#    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, HADMAM,
-#           HOWLONG, HADPAP2, LASTPAP2, HPVTEST, HPLSTTST, HADHYST2,
-#           PROFEXAM, LENGEXAM, PCPSAAD2, PCPSADI1, PCPSARE1, PSATEST1,
-#           PSATIME, PCPSARS1, PCPSADE1, PCDMDECN, `_RFMAM2Y`, `_MAM5021`,
-#           `_RFPAP33`, `_RFPSA21`)%>%
-#     mutate(year = "2016")
-# #
-#  BRFSS_2017 <- BRFSS_2017 %>%
-#    select(SEX, `_DRNKWEK`, TRNSGNDR, `_RFDRHV5`, PREGNANT, PFPPRVN2,
-#           TYPCNTR7, NOBCUSE6)%>%
-#     mutate(year = "2017")
-# #
-#  BRFSS_2018 <- BRFSS_2018 %>%
-#   select(SEX1, `_DRNKWEK`,  TRNSGNDR, `_LLCPWT`)%>%
-#     mutate(year = "2018")
-# #
-#  BRFSS_2019 <- BRFSS_2019 %>%
-#    select(`_MICHD`, `_SEX`, EDUCA, `_BMI5CAT`, `_DRNKWK1`, EXERANY2, `_RACE`,
-#           `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>%
-#     mutate(year = "2019")
+ BRFSS_2019 <- BRFSS_2019 %>%
+   select(`_MICHD`, `_SEX`, EDUCA, `_BMI5CAT`, `_DRNKWK1`, EXERANY2, `_RACE`,
+          `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>%
+    mutate(year = "2019")
 # 
-#  BRFSS_2020 <- BRFSS_2020 %>%
-#     mutate(year = "2020") %>%
-#     rename(SEX = `_SEX`)
-# #
-# # # renamed SEX1 in 2018 to SEX like all the other years
-#  BRFSS_2018 <- BRFSS_2018 %>%
-#    rename(SEX = SEX1)
-#  BRFSS_2019 <- BRFSS_2019 %>%
-#    rename(SEX = `_SEX`)
-# #
-#  # renamed AVEDRNK3 to AVEDRNK2 in 2019 like all the other years
-# BRFSS_2019 <- BRFSS_2019 %>%
-#   rename(`_DRNKWEK` = `_DRNKWK1`)
-# 
+ BRFSS_2020 <- BRFSS_2020 %>%
+    mutate(year = "2020") %>%
+    rename(SEX = `_SEX`)
+#
+# # renamed SEX1 in 2018 to SEX like all the other years
+ BRFSS_2018 <- BRFSS_2018 %>%
+   rename(SEX = SEX1)
+ BRFSS_2019 <- BRFSS_2019 %>%
+   rename(SEX = `_SEX`)
+#
+ # renamed AVEDRNK3 to AVEDRNK2 in 2019 like all the other years
+BRFSS_2019 <- BRFSS_2019 %>%
+  rename(`_DRNKWEK` = `_DRNKWK1`)
+
 # 
 # 
 # 
 # # # combine all years into 1 dataset
-# BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2016, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2017, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2018, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2019, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2020, SEX, TRNSGNDR, year))
+BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
+                   select(BRFSS_2016, SEX, TRNSGNDR, year),
+                   select(BRFSS_2017, SEX, TRNSGNDR, year),
+                   select(BRFSS_2018, SEX, TRNSGNDR, year),
+                   select(BRFSS_2019, SEX, TRNSGNDR, year),
+                   select(BRFSS_2020, SEX, TRNSGNDR, year))
 # 
 # # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # # in instead of running all steps above
@@ -119,12 +119,7 @@ library(tidyverse)
 ```
 
 ```{r}
-
-```
-
-
-```{r}
-BRFSS_all <- read.csv("brfss_all.csv")
+#BRFSS_all <- read.csv("brfss_all.csv")
 # add labels
 BRFSS_all_clean <- BRFSS_all %>% 
    mutate(SEX = recode_factor(SEX, 
@@ -142,13 +137,15 @@ BRFSS_all_clean <- BRFSS_all %>%
   mutate(yearLong = recode_factor(year,
                               '2015' = '2015: Indicate sex of respondent. Ask only if necessary.',
                               '2016' = '2016: Are you... (Male, Female, Refused)',
-                              '2017' = '2017: Indicate sex of respondent. Or, Are you male or female?',
+                              '2017' = '2017: Are you male or female?',
                               '2018' = '2018: What is your sex? or What was your sex at birth? Was it...',
                               '2019' = '2019: Are you male or female? or What was your sex at birth? Was it male or female?',
 '2020' = '2020: What was your sex at birth? Was it male or female?')) %>% 
   drop_na() %>% 
    droplevels()
 ```
+
+### Background
 
 In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans,
 reported that they identify as transgender [@lgbtgallup]. The percentage
@@ -263,7 +260,7 @@ statistics [@table1].
 
 ##### What is the relationship between sex and gender identity responses for participants over this six year period?
 
-The majority of those who reported being male-to-female transgender also reported their sex as male (Figure 1). Likewise, the majority of those who reported being female-to-male transgender reported their sex as female. With the exception of 2017, there was a higher percentage of male-to-female transgender participants reporting themselves to be male sex compared to the percentage of female-to-male transgender participants reporting themselves to be female.
+The majority of those who reported being male-to-female transgender also reported their sex as male each year (Figure 1). Likewise, the majority of those who reported being female-to-male transgender reported their sex as female. With the exception of 2017, there was a higher percentage of male-to-female transgender participants reporting themselves to be male sex compared to the percentage of female-to-male transgender participants reporting themselves to be female.
 
 *Figure 1. Distribution of reported sex among BRFSS participants who reported being transgender (2015-2020).*
 
@@ -302,7 +299,7 @@ BRFSS_all_clean %>%
   ggplot(aes(color = SEX, x = year, y = percYear)) +
   geom_path() +
   geom_point() +
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
+  #scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
   facet_wrap(~TRNSGNDR, nrow = 2) +
   scale_color_manual(values = c("gray60", "black")) +
   theme_minimal() +
@@ -317,10 +314,14 @@ BRFSS_all_clean %>%
 
 For the transgender male-to-female group, the 2018 and 2020 had a slightly different pattern of responses compared to the years just before these (more in line with the 2015 responses), with more participants selecting male sex in 2018 than in 2017 and in 2020 compared to 2019. For the transgender female-to-male group, 2018 question also marked a shift in responses with more participants choosing male sex than previous years. This small change was maintained in 2019 but there was a slight increase in female sex responses in 2020. The "at birth" wording appears to have had more of an impact on participants identifying as male-to-female transgender than on those identifying as female-to-male transgender. It is notable that, for both of the transgender groups (female-to-male and male-to-female) there was an increase in selection of male in response to the sex question in 2018. 
 
-The structure of the 2019 survey provides some additional information about differences in response patterns when including or not including "at birth" in a sex question. In 2019, there was more variability in responses among participants who were asked their sex (A) compared to participants who were asked their sex at birth (B). However, when compared to 2020, the 
+The structure of the 2019 survey provides some additional information about differences in response patterns when including or not including "at birth" in a sex question. In 2019, there was more variability in responses among participants who were asked their sex (A) compared to participants who were asked their sex at birth (B). However, when the sex at birth version of the question was adopted in 2020 (Figure 3C), the distribution of responses was somewhere between the responses from those who responded to the sex question in 2019 ans those who responded to the sex at birth question in 2019. 
 
 ```{r}
-BRFSS_2019_clean <- BRFSS_2019 %>% 
+temp <- tempfile(fileext = ".zip")
+download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
+BRFSS_2019_raw <- read_xpt(file = temp)
+
+BRFSS_2019_clean <- BRFSS_2019_raw %>% 
   mutate(SEXVAR = recode_factor(SEXVAR,
                                 '1' = 'male',
                                 '2' = 'female')) %>% 
@@ -358,7 +359,7 @@ sexVar <- BRFSS_2019_clean %>%
   #            labeller = label_wrap_gen(20)) +
   scale_fill_manual(values = c("gray60", "black")) +
   theme_minimal() +
-  labs(x = "Gender identity", y = "Percent in each\ntransgender category (sex)",
+  labs(x = "Gender identity", y = "Percent in each\ntransgender category (sex 2019)",
        fill = "Sex category")  +
   ylim(c(0, 100))
 
@@ -418,7 +419,13 @@ cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
 
 ### Discussion
 
-We found that about 75% of participants in the 2015 to 2020 BRFSS who identify as transgender male-to-female report male sex while about 25% report female sex. For participants during the same time frame who identify as transgender female-to-male report female sex a little over 60% of the time and report male sex just under 40% of the time. These values were relatively consistent over the six administrations of the survey despite multiple changes in how the sex question was worded. The value of the sex variable is used in computing some variables and in routing participants to questions about cancer screenings and other preventive health behaviors. In order to better understand and protect the health of transgender people, accurate measurement of sex would be useful.
+We found that about 75% of participants in the 2015 to 2020 BRFSS who identify as transgender male-to-female report male sex while about 25% report female sex. For participants during the same time frame who identify as transgender female-to-male report female sex a little over 60% of the time and report male sex just under 40% of the time. These values were relatively consistent over the six administrations of the survey despite multiple changes in how sex was measured. The one exception to this was in the group of transgender male-to-female participants who answered the optional module in 2019. When asked their sex at birth, about 85% of this group chose male. The value of the sex variable is used in computing some health related variables (e.g., heavy drinking) and in routing participants to questions about birth control, HPV vaccines, cancer screenings, and other preventive health behaviors. In order to better understand and protect the health of transgender people, accurate measurement of biological sex could be useful.
+
+[paragraph about evidence-based measurement of bio sex]
+
+[paragraph about calculated variables and routing, can BRFSS route trans-male-to-female to breast cancer screen]
+
+[paragraph suggesting researchers pay attention]
 
 
 
