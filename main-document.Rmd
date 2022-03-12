@@ -255,40 +255,40 @@ while the binge drinking definition only differs by a single drink per
 episode (5 for males, 4 for females). Given participant responses for
 sex vary within a single gender identity, these thresholds may not be
 accurately capturing heavy or binge drinking. For example, although
-Azagba et al. [@azagba2019] reported the sex response distribution for
-each transgender group in the first table of their paper, they did not
-include sex as a covariate in a logistic regression model computing the
+Azagba et al. [@azagba2019] reported the sex distribution for each
+transgender group in the first table of their paper, they did not
+include sex as a covariate in logistic regression models computing the
 odds of binge drinking for different transgender groups compared to
 cisgender groups. Perhaps not surprising, the findings suggest that
 female-to-male transgender participants have a lower odds of binge
 drinking compared to cisgender males and male-to-female transgender
 participants had higher odds of binge drinking compared to cisgender
-males [@azagba2019]. With the sex variable Given the importance of
-understanding alcohol consumption in the transgender population
-[@gilbert2018], a way of classifying hazardous consumption that takes
-into consideration gender identity could improve accuracy of this
-measure and thus improve the quality of research on alcohol use among
-transgender people.
+males [@azagba2019]. Given the importance of understanding alcohol
+consumption in the transgender population [@gilbert2018], a way of
+classifying hazardous consumption that takes into consideration gender
+identity could improve accuracy of this measure and thus improve the
+quality of research on alcohol use among transgender people.
 
-There are two possible remedies to the limitations on accurate
-population-level data. First, the BRFSS interviewers (and interviewers
-for other large scale surveys) could ask all of the questions currently
-asked of only male sex or only female sex for any person who identifies
-as transgender. In this way we can ensure more population-level
-information about important cancer screenings, health conditions, and
-health behaviors among transgender people. Second, researchers including
-the sex variable in their work should pay attention to measures of
-gender identity if they are available and, if gender identity measures
-are not available, might report on this limitation given that reported
-sex is likely a mixture of sex recorded at birth and gender identity.
+There are at least two possible remedies for the limitations on accurate
+population-level data on transgender health. First, the BRFSS (and other
+large scale surveys) could ask all of the questions currently asked of
+only male sex or only female sex for any person who identifies as
+transgender. In this way we can ensure more population-level information
+about important cancer screenings, health conditions, and health
+behaviors among transgender people. Second, researchers including the
+sex variable in their work should pay attention to measures of gender
+identity if they are available and, if gender identity measures are not
+available, might report on this limitation given that reported sex is
+likely a mixture of sex recorded at birth and gender identity.
 
 Although our work examined the BRFSS, data collected using other types
-of instruments, like medical records, is equally disappointing. Although
-most transgender men still have a cervix, they are less likely to be
-screened for cervical cancer compared to their cisgender counterparts
-[@gatos2018] with one the reasons being that some health systems base
-screening invitations on the sex listed health records [@connolly2020].
+of instruments, like medical records, are also impacting transgender
+health. For example, although most transgender men still have a cervix,
+they are less likely to be screened for cervical cancer compared to
+their cisgender counterparts [@gatos2018] with one the reasons being
+that some health systems base screening invitations on the sex listed
+health records [@connolly2020].
 
-[paragraph on measures of sex and gender identity]
+Measurement of sex and gender identity is evolving [@beischel2022].
 
 ### References
