@@ -239,13 +239,13 @@ questions currently asked of only male sex or only female sex for any
 person who identifies as transgender. In this way we can ensure more
 accurate, and much needed, population-level information about important
 cancer screenings, health conditions, and health behaviors among
-transgender people. The lack of accurate population-level data Although
-most female-to-male transgender men still have a cervix, they are less
-likely to be screened for cervical cancer compared to their cisgender
-counterparts [@gatos2018] with one the reasons being that screening
-invitations are initiated based on the sex listed health records
-[@connolly2020]. Likewise, population-level research is lacking on
-breast cancer among transgender people, even though many take hormone
+transgender people. The lack of accurate population-level data is
+problematic Although most female-to-male transgender men still have a
+cervix, they are less likely to be screened for cervical cancer compared
+to their cisgender counterparts [@gatos2018] with one the reasons being
+that screening invitations are initiated based on the sex listed health
+records [@connolly2020]. Likewise, population-level research is lacking
+on breast cancer among transgender people, even though many take hormone
 replacement therapy which could influence breast cancer risk
 [@dente2019].
 
