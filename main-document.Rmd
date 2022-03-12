@@ -234,15 +234,14 @@ variables (e.g., heavy drinking) and in routing participants to
 questions about birth control, HPV vaccines, cancer screenings, and
 other preventive health behaviors.
 
-Given that participants who identify as transgender male-to-female and
-female-to-male both choose male sex and female sex in response to each
-of the sex questions, we suggest that BRFSS interviewers ask all of the
+Given our findings, we suggest that BRFSS interviewers ask all of the
 questions currently asked of only male sex or only female sex for any
 person who identifies as transgender. In this way we can ensure more
-accurate information about important cancer screenings, health
-conditions, and health behaviors among transgender people. Although most
-female-to-male transgender men still have a cervix, they are less likely
-to be screened for cervical cancer compared to their cisgender
+accurate, and much needed, population-level information about important
+cancer screenings, health conditions, and health behaviors among
+transgender people. The lack of accurate population-level data Although
+most female-to-male transgender men still have a cervix, they are less
+likely to be screened for cervical cancer compared to their cisgender
 counterparts [@gatos2018] with one the reasons being that screening
 invitations are initiated based on the sex listed health records
 [@connolly2020]. Likewise, population-level research is lacking on
@@ -250,16 +249,16 @@ breast cancer among transgender people, even though many take hormone
 replacement therapy which could influence breast cancer risk
 [@dente2019].
 
-Likewise, the classification as heavy drinking and binge drinking we
-would suggest basing this computation on more than the sex question
-alone. If a participant, for example, reports being male-to-female
-transgender and female sex, the cutoff values for classifying this
-person as a problem drinker might be inaccurate, resulting in
-misclassification. Given the importance of understanding alcohol
-consumption in the transgender population [@gilbert2018], a way of
-classifying hazardous consumption that take into consideration gender
-identity could improve accuracy of this measure and thus improve the
-quality of research on alcohol use among transgender people.
+The classification as heavy drinking and binge drinking we would suggest
+basing this computation on more than the sex question alone. If a
+participant, for example, reports being male-to-female transgender and
+female sex, the cutoff values for classifying this person as a problem
+drinker might be inaccurate, resulting in misclassification. Given the
+importance of understanding alcohol consumption in the transgender
+population [@gilbert2018], a way of classifying hazardous consumption
+that take into consideration gender identity could improve accuracy of
+this measure and thus improve the quality of research on alcohol use
+among transgender people.
 
 [paragraph suggesting researchers pay attention]
 
