@@ -218,19 +218,22 @@ cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
 
 ### Discussion
 
-We found that about 75% of participants in the 2015 to 2020 BRFSS who
-identify as transgender male-to-female report male sex while about 25%
-report female sex. During the same time frame, participants who identify
-as transgender female-to-male report female sex a little over 60% of the
-time and report male sex just under 40% of the time. These values were
+We found that about `r round(100*percTrans[1,1], 0)`% of participants in
+the 2015 to 2020 BRFSS who identify as transgender male-to-female report
+male sex while about `r 100-round(100*percTrans[1,1], 0)`% report female
+sex. During the same time frame, participants who identify as
+transgender female-to-male report female sex
+`r round(100*percTrans[2,2], 0)`% of the time and report male sex
+`r 100-   round(100*percTrans[2,2], 0)`% of the time. These values were
 relatively consistent over the six administrations of the survey despite
 multiple changes in how sex was measured. The one exception to this was
 in the group of transgender male-to-female participants who answered the
 optional module on gender identity in 2019. When asked their sex at
-birth, about 85% of this group chose male. The value of the sex variable
-is used in computing some health related variables (e.g., heavy
-drinking) and in routing participants to questions about birth control,
-HPV vaccines, cancer screenings, and other preventive health behaviors.
+birth, `r round(100*percTrans2019[1,1], 0)`% of this group chose male.
+The value of the sex variable is used in computing some health related
+variables (e.g., heavy drinking) and in routing participants to
+questions about birth control, HPV vaccines, cancer screenings, and
+other preventive health behaviors.
 
 The lack of *accurate* population-level epidemiological data for
 transgender people is problematic [@dente2019]. For example,
@@ -276,17 +279,26 @@ about important cancer screenings, health conditions, and health
 behaviors among transgender people. Second, researchers including the
 sex variable in their work should pay attention to measures of gender
 identity if they are available and, if gender identity measures are not
-available, might report on this limitation given that reported sex is
-likely a mixture of sex recorded at birth and gender identity.
+available, might report on this limitation given that data on reported
+sex for transgender people is likely a mixture of sex recorded at birth
+and gender identity.
 
-Although our work examined the BRFSS, ineffective data collected by
-other types of instruments, like medical records, are also impacting
-transgender health. For example, although most transgender men still
-have a cervix, they are less likely to be screened for cervical cancer
-compared to their cisgender counterparts [@gatos2018] with one the
-reasons being that some health systems base screening invitations on the
-sex listed health records [@connolly2020].
+Ineffective data collection for transgender people is not limited to
+measures in large scale surveys. Poor data collection in medical records
+is also impacting transgender health. For example, although most
+transgender men still have a cervix, they are less likely to be screened
+for cervical cancer compared to their cisgender counterparts
+[@gatos2018] with one of the reasons being that some health systems base
+screening invitations on the sex listed health records [@connolly2020].
 
-Measurement of sex and gender identity is evolving [@beischel2022].
+Measurement of sex and gender identity has been evolving for decades
+[@beischel2022; @Bauer2017]. In addition to the challenge we identify in
+this paper, other challenges during measurement include A 2017 study
+[@Bauer2017] examined different ways of measuring sex and gender and
+consulted with experts to identify a set of three questions, "What sex
+were you assigned at birth, meaning on your original birth
+certificate?"; "Which best describes your current gender identity?";
+and, for those whose gender identity differs from birth sex, "What
+gender do you currently live as in your day-to-day life?"
 
 ### References

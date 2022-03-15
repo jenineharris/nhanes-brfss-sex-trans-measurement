@@ -2,6 +2,7 @@
 # TO CREATE ANALYTIC DATA SET, UNCOMMENT AND RUN THIS CODE CHUNK
 # bring in files from online BRFSS 2015 to 2018 data
 library(haven)
+library(tidyverse)
 # #
 # #
 # # 2015 data
@@ -37,7 +38,7 @@ library(haven)
 # # select only the variables to use in the analysis (e.g. changes 300+ variables to only needed for analysis)
 
 #
-library(tidyverse)
+
 # BRFSS_2015 <- BRFSS_2015 %>%
 #   select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
 #          PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
@@ -248,11 +249,17 @@ legend <- get_legend(
     guides(color = guide_legend(nrow = 1)) +
     theme(legend.position = "bottom"))
 
+
+
 ######### scraps
 
 # basic table exploring data
 library(table1)
-table1(~ year | TRNSGNDR * SEX, data = BRFSS_all_clean)
+percTrans <- prop.table(table(BRFSS_all_clean$TRNSGNDR, BRFSS_all_clean$SEX),
+           margin = 1)
+
+percTrans2019 <- prop.table(table(BRFSS_2019_clean$TRNSGNDR, BRFSS_2019_clean$BIRTHSEX),
+                            margin = 1)
 
 library(descr)
 
