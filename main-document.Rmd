@@ -242,8 +242,16 @@ people, even though many take hormone replacement therapy which could
 influence breast cancer risk [@dente2019]. In another example
 [@tabaac2018], three years of BRFSS data were used to determine
 colonoscopy and mammography screenings among transgender people but
-neglected to mention the possible mismatch between the participant
+neglected to discuss the possible mismatch between the participant
 response to the sex variable and the types of screenings recommended.
+Similar inadequate data in medical records is exacerbating the problem.
+For example, although most transgender men still have a cervix, they are
+less likely to be screened for cervical cancer compared to their
+cisgender counterparts [@gatos2018] with one of the reasons being that
+some health systems base screening invitations on the sex listed health
+records [@connolly2020]. It is clear that our existing tools at multiple
+levels are inadequate for collecting and using data effectively for
+transgender people.
 
 In addition, the BRFSS calculated variables contain a measure of heavy
 drinking and a measure of binge drinking. Both of these measures
@@ -269,36 +277,44 @@ attributes rather than relying solely on sex could improve accuracy of
 this measure and thus improve the quality of research on alcohol use
 among transgender people.
 
-There are at least two possible remedies for the BRFSS and other large
-scale surveys to reduce the current limitations on accurate
-population-level data on transgender health. First, the BRFSS (and other
-large scale surveys) could ask all of the questions currently asked of
-only male sex or only female sex for any person who identifies as
-transgender. In this way we can ensure more population-level information
-about important cancer screenings, health conditions, and health
-behaviors among transgender people. Second, researchers including the
-sex variable in their work should pay attention to measures of gender
-identity if they are available and, if gender identity measures are not
-available, might report on this limitation given that data on reported
-sex for transgender people is likely a mixture of sex recorded at birth
-and gender identity.
+There are at least two possible ways to reduce the current limitations
+on accurate population level data for transgender people. First, the
+BRFSS (and other data collection and storage tools) could build in the
+flexibility to ask all of the questions currently asked of only male sex
+or only female sex for any person who identifies as transgender. In this
+way we can ensure more accurate information about important cancer
+screenings, health conditions, and health behaviors among transgender
+people. Second, researchers including the sex variable in their work
+should pay attention to measures of gender identity if they are
+available and, if gender identity measures are not available, might
+report on this limitation given that data on reported sex for
+transgender people is likely a mixture of sex recorded at birth and
+gender identity.
 
-Ineffective data collection for transgender people is not limited to
-measures in large scale surveys. Poor data collection in medical records
-is also impacting transgender health. For example, although most
-transgender men still have a cervix, they are less likely to be screened
-for cervical cancer compared to their cisgender counterparts
-[@gatos2018] with one of the reasons being that some health systems base
-screening invitations on the sex listed health records [@connolly2020].
+More flexible and accurate ways of measurement of sex and gender
+identity are also necessary to protect and improve the health of
+transgender people [@beischel2022; @Bauer2017]. Measures including
+transgender identity currently include single questions and two-step
+questions typically asking about sex at birth and gender identity
+separately, like the BRFSS 2020 administration [@measurin2022]. While
+the two-step questions provide more detailed information and is
+preferable, it is not perfect. Numerous studies suggest there are some
+drawbacks including a small number of people not identifying as
+transgender and a small number of cisgender participants responding that
+they are transgender because they do not understand the terminology
+[@measurin2022].
 
-Measurement of sex and gender identity has been evolving for decades
-[@beischel2022; @Bauer2017]. In addition to the challenge we identify in
-this paper, other challenges during measurement include A 2017 study
-[@Bauer2017] examined different ways of measuring sex and gender and
-consulted with experts to identify a set of three questions, "What sex
-were you assigned at birth, meaning on your original birth
+A 2017 study [@Bauer2017] examined different ways of measuring sex and
+gender and consulted with experts to identify a set of three questions,
+"What sex were you assigned at birth, meaning on your original birth
 certificate?"; "Which best describes your current gender identity?";
 and, for those whose gender identity differs from birth sex, "What
 gender do you currently live as in your day-to-day life?"
+
+Ineffective data collection, storage, and use is a threat to the health
+of transgender people. More accurate, inclusive, and consistent
+measurement along with data systems that are more flexible for data
+collection, storage, and use are strategies that may help to address
+this problem.
 
 ### References
