@@ -180,7 +180,7 @@ reposition_legend(sixBars +
 
 Although the sex question asked of participants changed multiple times
 from 2014 to 2020, the percentage in each transgender group choosing
-male and female did not change notably for either group (Figure 2).
+male and female remained relatively stable for both groups (Figure 2).
 
 ```{r}
 overTime
@@ -188,9 +188,17 @@ overTime
 
 ##### Did the versions of the question that specified "at birth" result in different patterns of sex and gender identity reporting compared to other years?
 
-The transgender male-to-female group ranged from `r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`% to
-`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`% male sex with no apparent pattern given the question wording changes. The transgender female-to-male group ranged from `r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`% to
-`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`% female sex with a pattern of decline in responding "female" to the sex question from 2014 to 2020. 
+The transgender male-to-female group ranged from
+`r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`%
+to
+`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`%
+male sex with no apparent pattern given the question wording changes.
+The transgender female-to-male group ranged from
+`r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`%
+to
+`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`%
+female sex with a pattern of decline in responding "female" to the sex
+question from 2014 to 2020.
 
 The structure of the 2019 survey provides some additional information
 about differences in response patterns when including or not including
@@ -221,12 +229,15 @@ sex. During the same time frame, participants who identify as
 transgender female-to-male report female sex
 `r round(100*percTrans[2,2], 0)`% of the time and report male sex
 `r 100-   round(100*percTrans[2,2], 0)`% of the time. These values were
-relatively consistent over the six administrations of the survey, although did see some minor shifts in the male-to-female group and a relatively steady decline in the female-to-male group despite
-multiple changes in how sex was measured. The one exception to this was
-in the group of transgender male-to-female participants who answered the
-optional module on gender identity in 2019. When asked their sex at
-birth, `r round(100*percTrans2019[1,1], 0)`% of this group chose male.
-The value of the sex variable is used in computing some health related
+relatively consistent over the seven administrations of the survey;
+there were some minor shifts year-to-year in the sex distribution in the
+male-to-female group and a relatively steady increase in reporting male
+sex in the female-to-male group. One exception to the relatively
+consistent percentages in the male-to-female transgender group was for
+the participants who answered the optional module on gender identity in
+2019. When asked their sex at birth,
+`r round(100*percTrans2019[1,1], 0)`% of this group chose male. The
+value of the sex variable is used in computing some health related
 variables (e.g., heavy drinking) and in routing participants to
 questions about birth control, HPV vaccines, cancer screenings, and
 other preventive health behaviors.
@@ -235,43 +246,49 @@ The lack of *accurate* population-level epidemiological data for
 transgender people is problematic [@dente2019]. For example,
 population-level research is lacking on breast cancer among transgender
 people, even though many take hormone replacement therapy which could
-influence breast cancer risk [@dente2019]. In another example
-[@tabaac2018], three years of BRFSS data were used to determine
-colonoscopy and mammography screenings among transgender people but
-neglected to discuss the possible mismatch between the participant
-response to the sex variable and the types of screenings recommended.
+influence breast cancer risk [@dente2019]. In one example [@tabaac2018],
+three years of BRFSS data were used to determine colonoscopy and
+mammography screenings among transgender people but neglected to discuss
+the possible mismatch between the participant response to the sex
+variable and the types of screenings recommended. Likewise, another
+study using BRFSS data relied on the *Are you transgender?* question
+along with the sex question to classify people as transgender men and
+transgender women [@tabaac2018] before analysis of the associations
+between a five category variable (cisgender men, cisgender women,
+transgender men, transgender women, and gender non-conforming) and
+several cancer screening tests including pap and PSA tests. 
+
 Similar inadequate data in medical records is exacerbating the problem.
 For example, although most transgender men still have a cervix, they are
 less likely to be screened for cervical cancer compared to their
 cisgender counterparts [@gatos2018] with one of the reasons being that
 some health systems base screening invitations on the sex listed health
-records [@connolly2020]. It is clear that our existing tools at multiple
-levels are inadequate for collecting and using data effectively for
-transgender people.
+records [@connolly2020]. It is clear that our existing tools are
+inadequate for collecting and using data effectively for transgender
+people.
 
-In addition, the BRFSS calculated variables contain a measure of heavy
-drinking and a measure of binge drinking. Both of these measures
-classify participants based on sex and do not consider gender identity
-in classification; the threshold for heavy drinking is quite different
-for males (14 drinks per week) compared to females (7 drinks per week),
-while the binge drinking definition differs by a single drink per
-episode (5 for males, 4 for females). Given participant responses for
-sex vary within a single gender identity, these thresholds may not be
-accurately capturing heavy or binge drinking. For example, although
-Azagba et al. [@azagba2019] reported the sex distribution for each
-transgender group in the first table of their paper, they did not
-include sex as a covariate in logistic regression models computing the
-odds of binge drinking for different transgender groups compared to
-cisgender groups. Perhaps not surprising, the findings suggest that
-female-to-male transgender participants have a lower odds of binge
-drinking compared to cisgender males and male-to-female transgender
-participants had higher odds of binge drinking compared to cisgender
-females [@azagba2019]. Given the importance of understanding alcohol
-consumption in the transgender population [@gilbert2018], a way of
-classifying hazardous consumption that takes into consideration physical
-attributes rather than relying solely on sex could improve accuracy of
-this measure and thus improve the quality of research on alcohol use
-among transgender people.
+In addition ineffective direct measurement of sex, the BRFSS calculates
+variables that rely on the value of the sex variable. Two of these are
+binary variables for heavy drinking and binge drinking. Both of these
+measures classify participants based on sex and do not consider gender
+identity in classification; the threshold for heavy drinking is quite
+different for males (14 drinks per week) compared to females (7 drinks
+per week), while the binge drinking definition differs by a single drink
+per episode (5 for males, 4 for females). Given participant responses
+for sex vary within a single gender identity, these thresholds may not
+be accurately capturing heavy or binge drinking. For example, Azagba et
+al. [@azagba2019] did not include sex as a covariate in logistic
+regression models computing the odds of binge drinking for different
+transgender groups compared to cisgender groups. Perhaps not surprising,
+the findings suggested that female-to-male transgender participants have
+a lower odds of binge drinking compared to cisgender males and
+male-to-female transgender participants had higher odds of binge
+drinking compared to cisgender females [@azagba2019]. Given the
+importance of understanding alcohol consumption in the transgender
+population [@gilbert2018], a way of classifying hazardous consumption
+that takes into consideration physical attributes rather than relying
+solely on sex could improve accuracy of this measure and thus improve
+the quality of research on alcohol use among transgender people.
 
 There are at least two possible ways to reduce the current limitations
 on accurate population level data for transgender people. First, the
