@@ -2,8 +2,14 @@
 # TO CREATE ANALYTIC DATA SET, UNCOMMENT AND RUN THIS CODE CHUNK
 # bring in files from online BRFSS 2015 to 2018 data
 library(haven)
+library(tidyverse)
 # #
 # #
+# 2014 data
+# temp <- tempfile(fileext = ".zip")
+# download.file(url  = "https://www.cdc.gov/brfss/annual_data/2014/files/LLCP2014XPT.zip", destfile = temp)
+# BRFSS_2014 <- read_xpt(file = temp)
+# 
 # # 2015 data
 # temp <- tempfile(fileext = ".zip")
 # download.file(url  = "https://www.cdc.gov/brfss/annual_data/2015/files/LLCP2015XPT.zip", destfile = temp)
@@ -33,11 +39,14 @@ library(haven)
 # temp <- tempfile(fileext = ".zip")
 # download.file(url  = "https://www.cdc.gov/brfss/annual_data/2020/files/LLCP2020XPT.zip", destfile = temp)
 # BRFSS_2020 <- read_xpt(file = temp)
-
-# # select only the variables to use in the analysis (e.g. changes 300+ variables to only needed for analysis)
-
-#
-library(tidyverse)
+# 
+# # # select only the variables to use in the analysis (e.g. changes 300+ variables to only needed for analysis)
+# 
+# #
+BRFSS_2014 <- BRFSS_2014 %>%
+  select(SEX,  TRNSGNDR, `_LLCPWT`) %>%
+  mutate(year = "2014")
+# #
 # BRFSS_2015 <- BRFSS_2015 %>%
 #   select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
 #          PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
@@ -67,7 +76,7 @@ library(tidyverse)
 #   select(`_MICHD`, `_SEX`, EDUCA, `_BMI5CAT`, `_DRNKWK1`, EXERANY2, `_RACE`,
 #          `_AGE80`, `_SMOKER3`, TRNSGNDR, `_LLCPWT`)%>%
 #   mutate(year = "2019")
-# # 
+# #
 # BRFSS_2020 <- BRFSS_2020 %>%
 #   mutate(year = "2020") %>%
 #   rename(SEX = `_SEX`)
@@ -81,28 +90,31 @@ library(tidyverse)
 # # renamed AVEDRNK3 to AVEDRNK2 in 2019 like all the other years
 # BRFSS_2019 <- BRFSS_2019 %>%
 #   rename(`_DRNKWEK` = `_DRNKWK1`)
-
 # 
-# 
-# 
-# # # combine all years into 1 dataset
-# BRFSS_all <- rbind(select(BRFSS_2015, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2016, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2017, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2018, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2019, SEX, TRNSGNDR, year),
-#                    select(BRFSS_2020, SEX, TRNSGNDR, year))
-# # 
-# # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
-# # in instead of running all steps above
-# write.csv(BRFSS_all, file = "brfss_all.csv")
+# #
+# #
+#
+# # combine all years into 1 dataset
+BRFSS_all <- rbind(select(BRFSS_2014, SEX, TRNSGNDR, year),
+                   select(BRFSS_2015, SEX, TRNSGNDR, year),
+                   select(BRFSS_2016, SEX, TRNSGNDR, year),
+                   select(BRFSS_2017, SEX, TRNSGNDR, year),
+                   select(BRFSS_2018, SEX, TRNSGNDR, year),
+                   select(BRFSS_2019, SEX, TRNSGNDR, year),
+                   select(BRFSS_2020, SEX, TRNSGNDR, year))
+#
+# save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
+# in instead of running all steps above
+write.csv(BRFSS_all, file = "brfss_all.csv")
 
 BRFSS_all <- read.csv("brfss_all.csv")
 # add labels
 BRFSS_all_clean <- BRFSS_all %>% 
   mutate(SEX = recode_factor(SEX, 
                              '1' = 'male',
-                             '2' = 'female')) %>% 
+                             '2' = 'female',
+                             '7' = NA_character_,
+                             '9' = NA_character_)) %>% 
   mutate(TRNSGNDR = recode_factor(TRNSGNDR,
                                   '1' = 'Trans male-to-female',
                                   '2' = 'Trans female-to-male',
@@ -113,6 +125,7 @@ BRFSS_all_clean <- BRFSS_all %>%
   filter(TRNSGNDR %in% c("Trans male-to-female",
                          "Trans female-to-male")) %>% 
   mutate(yearLong = recode_factor(year,
+                                  '2014' = '2014: Indicate sex of respondent. Ask only if necessary.',
                                   '2015' = '2015: Indicate sex of respondent. Ask only if necessary.',
                                   '2016' = '2016: Are you... (Male, Female, Refused)',
                                   '2017' = '2017: Are you male or female?',
@@ -122,6 +135,7 @@ BRFSS_all_clean <- BRFSS_all %>%
   drop_na() %>% 
   droplevels()
 
+library(lemon) # reposition legend function
 sixBars <- BRFSS_all_clean %>% 
   drop_na() %>% 
   group_by(TRNSGNDR, SEX, yearLong) %>% 
@@ -131,8 +145,8 @@ sixBars <- BRFSS_all_clean %>%
   ggplot(aes(x = TRNSGNDR, fill = SEX, y = percYear)) +
   geom_col(position = "dodge") +
   #coord_flip() +
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
-  facet_wrap(~yearLong, 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
+  facet_wrap(~yearLong, nrow = 2,
              labeller = label_wrap_gen(20)) +
   scale_fill_manual(values = c("gray60", "black")) +
   theme_minimal() +
@@ -155,7 +169,8 @@ overTime <- BRFSS_all_clean %>%
   theme_minimal() +
   labs(x = "Year", y = "Percent in each sex category",
        color = "Sex category")  + 
-  scale_x_continuous(labels=c("2015","2016","2017", "2018", "2019","2020")) +
+  scale_x_continuous(labels=c("2014","2015","2016","2017", "2018", "2019","2020"),
+                     breaks=c(2014,2015,2016,2017, 2018, 2019,2020)) +
   ylim(c(0,100))
 
 temp <- tempfile(fileext = ".zip")
@@ -248,11 +263,28 @@ legend <- get_legend(
     guides(color = guide_legend(nrow = 1)) +
     theme(legend.position = "bottom"))
 
+## Get some percentages
+percTransYear <- prop.table(table(BRFSS_all_clean$TRNSGNDR, 
+                                  BRFSS_all_clean$SEX,
+                                  BRFSS_all_clean$year),
+                            margin = 1)
+
+percTransTib <- BRFSS_all_clean %>% 
+  group_by(TRNSGNDR, SEX, year) %>% 
+  count() %>% 
+  group_by(year, TRNSGNDR) %>% 
+  mutate(percentTranYr = n/sum(n))
+
+
 ######### scraps
 
 # basic table exploring data
 library(table1)
-table1(~ year | TRNSGNDR * SEX, data = BRFSS_all_clean)
+percTrans <- prop.table(table(BRFSS_all_clean$TRNSGNDR, BRFSS_all_clean$SEX),
+           margin = 1)
+
+percTrans2019 <- prop.table(table(BRFSS_2019_clean$TRNSGNDR, BRFSS_2019_clean$BIRTHSEX),
+                            margin = 1)
 
 library(descr)
 

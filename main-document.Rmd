@@ -35,18 +35,18 @@ have implications for health, health care, and health outcomes
 @mcclure2022gender].
 
 Conducting research to understand factors that influence health, health
-care, and health outcomes is important for the development of policy and
-programs that protect and improve health. Given the roles of sex, sexual
-orientation, and gender identity in health, many social science and
-health surveys seek to measure sex, and a growing number also collect
-sexual orientation and gender identity information. Until recently,
-measurement of gender identity was unusual and measurement of sex was
-often done by an interviewer recording the sex they thought the
-participant was based on voice or other physical cues
-[@bauer2017transgender\] or asking "what is your sex?" and recording
-either male or female. In addition, researchers have frequently treated
-gender as a synonym for sex \[@krieger2003genders; @johnson2009better;
-@tate2013two].
+care, and health outcomes is important for creating guidelines,
+policies, and programs that protect and improve health. Given the roles
+of sex, sexual orientation, and gender identity in health, many social
+science and health surveys seek to measure sex, and a growing number
+also collect sexual orientation and gender identity information. Until
+recently, measurement of gender identity was unusual and measurement of
+sex was often done by an interviewer recording the sex they thought the
+participant was based on voice or other cues [@bauer2017transgender] or
+asking "what is your sex?" and recording either male or female. In
+addition, researchers have frequently treated gender as a synonym for
+sex [@krieger2003genders; @johnson2009better; @tate2013two].
+
 
 For decades there have been calls and attempts to improve the
 measurement of sex, gender, and sexual orientation [@krieger2003genders;
@@ -59,19 +59,19 @@ Prevention collect BRFSS participant data each month over telephone. It
 is considered the world's largest health survey system, collecting data
 from over 400,000 individuals yearly [@brfss].
 
-Until 2015, BRFSS did not ask participants about gender identity. In
+Until 2014, BRFSS did not ask participants about gender identity. In
 2015 the BRFSS added an optional question about gender identity to the
 survey and states could decide whether or not to include the gender
 identity question when conducting data collection. The gender identity
-question that was included in the BRFSS from 2015 until 2020 (the most
+question that was included in the BRFSS from 2014 until 2020 (the most
 recent year of data released) was: "Do you consider yourself to be
 transgender?" The follow-up question for those who answered yes was, "Do
 you consider yourself to be 1. Male-to-female, 2. Female-to-male, or 3.
 Gender nonconforming?"
 
 Although a gender identity question was added, the wording of the sex
-question did not make any distinction between sex recorded and gender
-for several years. In 2015, the interviewer selected the sex of the
+question did not make any distinction between sex and gender for several
+years. In 2014 and 2015, the interviewer selected the sex of the
 participant given the prompt: "Indicate sex of respondent. Ask only if
 necessary." In 2016, the prompt changed to, "Are you..." with the
 options of Male, Female, and Refused and a note, "Note: This may be
@@ -115,24 +115,24 @@ male-to-female transgender identity, some reported their sex to be male
 and others reported their sex to be female. This has likely led to
 numerous published scientific papers examining sex differences or using
 sex as a covariate and potentially including participants whose sex
-recorded at birth was something other than their sex as recorded in the
+recorded at birth was something other than their sex as recorded by the
 BRFSS.
 
-The implications of how sex is measured also impacts multiple computed
-variables in the BRFSS that rely on the sex variable as part of the
-calculation. For example, the BRFSS variable for heavy drinking codes a
-male as a heavy drinker at 14 or more alcoholic drinks per week and a
-female as a heavy drinker at 7 or more alcoholic drinks per week.
-Questions related to pregnancy and pregnancy or birth-related health
-conditions are only asked of those who report being female and questions
-about human papilloma virus (HPV) screening and vaccination and birth
-control type and behavior differ for those who select male or female
-sex. Likewise, questions about mammograms, breast exams, and prostate
+The implications of how sex is measured impacts which questions
+participants are asked and how multiple variables are computed in the
+BRFSS. For example, the BRFSS variable for heavy drinking codes a male
+as a heavy drinker at 14 or more alcoholic drinks per week and a female
+as a heavy drinker at 7 or more alcoholic drinks per week. Questions
+related to pregnancy and pregnancy or birth-related health conditions
+are only asked of those who report being female and questions about
+human papilloma virus (HPV) screening and vaccination and birth control
+type and behavior differ for those who select male or female sex.
+Likewise, questions about mammograms, breast exams, and prostate
 specific antigen tests are only asked of people who report being in a
 specific sex category.
 
 We sought to better understand the relationship between sex and gender
-identity responses in the BRFSS data from 2015 (the first year of the
+identity responses in the BRFSS data from 2014 (the first year of the
 gender identity question) to the most recently released year of data in
 2020. Specifically we answer three questions: (1) What is the
 relationship between sex and gender identity responses for participants
@@ -144,7 +144,7 @@ identity reporting compared to other years?
 
 ### Methods
 
-We imported the BRFSS data sets from 2015 through 2020 directly from the
+We imported the BRFSS data sets from 2014 through 2020 directly from the
 Centers for Disease Control and Prevention website. We used R
 statistical software version 4.1.1 [@rstats], the RStudio (version
 1.4.1717) interactive development environment [@rstudio], and a function
@@ -166,16 +166,20 @@ male sex compared to the percentage of female-to-male transgender
 participants reporting themselves to be female.
 
 *Figure 1. Distribution of reported sex among BRFSS participants who
-reported being transgender (2015-2020).*
+reported being transgender (2014-2020).*
 
 ```{r}
-sixBars
+reposition_legend(sixBars +  
+                                     facet_wrap(.~yearLong,nrow = 2,
+                                                labeller = label_wrap_gen(20)), 
+                                   position = "bottom",
+                                   panel='panel-4-2')
 ```
 
 ##### How has the relationship between measured sex and gender identity changed as the sex question changed over this six year period?
 
 Although the sex question asked of participants changed multiple times
-from 2015 to 2020, the percentage in each transgender group choosing
+from 2014 to 2020, the percentage in each transgender group choosing
 male and female did not change notably for either group (Figure 2).
 
 ```{r}
@@ -184,30 +188,21 @@ overTime
 
 ##### Did the versions of the question that specified "at birth" result in different patterns of sex and gender identity reporting compared to other years?
 
-For the transgender male-to-female group, the 2018 and 2020 had a
-slightly different pattern of responses compared to the years just
-before these (more in line with the 2015 responses), with more
-participants selecting male sex in 2018 than in 2017 and in 2020
-compared to 2019. For the transgender female-to-male group, 2018
-question also marked a shift in responses with more participants
-choosing male sex than previous years. This small change was maintained
-in 2019 but there was a slight increase in female sex responses in 2020.
-The "at birth" wording appears to have had more of an impact on
-participants identifying as male-to-female transgender than on those
-identifying as female-to-male transgender. It is notable that, for both
-of the transgender groups (female-to-male and male-to-female) there was
-an increase in selection of male in response to the sex question in
-2018.
+The transgender male-to-female group ranged from `r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`% to
+`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`% male sex with no apparent pattern given the question wording changes. The transgender female-to-male group ranged from `r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`% to
+`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`% female sex with a pattern of decline in responding "female" to the sex question from 2014 to 2020. 
 
 The structure of the 2019 survey provides some additional information
 about differences in response patterns when including or not including
 "at birth" in a sex question. In 2019, there was more variability in
-responses among participants who were asked their sex (A) compared to
-participants who were asked their sex at birth (B). However, when the
-sex at birth version of the question was adopted in 2020 (Figure 3C),
-the distribution of responses was somewhere between the responses from
-those who responded to the sex question in 2019 ans those who responded
-to the sex at birth question in 2019.
+responses among participants who were asked their sex (Figure 3A)
+compared to participants who were asked their sex at birth (Figure 3B).
+However, when the sex at birth version of the question was adopted for
+everyone in 2020 (Figure 3C), the distribution of responses was
+somewhere between the responses from those who responded to the sex
+question in 2019 and those who responded to the sex at birth question in
+2019.
+
 
 ```{r}
 cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
@@ -219,27 +214,103 @@ cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
 
 ### Discussion
 
-We found that about 75% of participants in the 2015 to 2020 BRFSS who
-identify as transgender male-to-female report male sex while about 25%
-report female sex. For participants during the same time frame who
-identify as transgender female-to-male report female sex a little over
-60% of the time and report male sex just under 40% of the time. These
-values were relatively consistent over the six administrations of the
-survey despite multiple changes in how sex was measured. The one
-exception to this was in the group of transgender male-to-female
-participants who answered the optional module in 2019. When asked their
-sex at birth, about 85% of this group chose male. The value of the sex
-variable is used in computing some health related variables (e.g., heavy
-drinking) and in routing participants to questions about birth control,
-HPV vaccines, cancer screenings, and other preventive health behaviors.
-In order to better understand and protect the health of transgender
-people, accurate measurement of biological sex could be useful.
+We found that about `r round(100*percTrans[1,1], 0)`% of participants in
+the 2014 to 2020 BRFSS who identify as transgender male-to-female report
+male sex while about `r 100-round(100*percTrans[1,1], 0)`% report female
+sex. During the same time frame, participants who identify as
+transgender female-to-male report female sex
+`r round(100*percTrans[2,2], 0)`% of the time and report male sex
+`r 100-   round(100*percTrans[2,2], 0)`% of the time. These values were
+relatively consistent over the six administrations of the survey, although did see some minor shifts in the male-to-female group and a relatively steady decline in the female-to-male group despite
+multiple changes in how sex was measured. The one exception to this was
+in the group of transgender male-to-female participants who answered the
+optional module on gender identity in 2019. When asked their sex at
+birth, `r round(100*percTrans2019[1,1], 0)`% of this group chose male.
+The value of the sex variable is used in computing some health related
+variables (e.g., heavy drinking) and in routing participants to
+questions about birth control, HPV vaccines, cancer screenings, and
+other preventive health behaviors.
 
-\[paragraph about evidence-based measurement of bio sex\]
+The lack of *accurate* population-level epidemiological data for
+transgender people is problematic [@dente2019]. For example,
+population-level research is lacking on breast cancer among transgender
+people, even though many take hormone replacement therapy which could
+influence breast cancer risk [@dente2019]. In another example
+[@tabaac2018], three years of BRFSS data were used to determine
+colonoscopy and mammography screenings among transgender people but
+neglected to discuss the possible mismatch between the participant
+response to the sex variable and the types of screenings recommended.
+Similar inadequate data in medical records is exacerbating the problem.
+For example, although most transgender men still have a cervix, they are
+less likely to be screened for cervical cancer compared to their
+cisgender counterparts [@gatos2018] with one of the reasons being that
+some health systems base screening invitations on the sex listed health
+records [@connolly2020]. It is clear that our existing tools at multiple
+levels are inadequate for collecting and using data effectively for
+transgender people.
 
-\[paragraph about calculated variables and routing, can BRFSS route
-trans-male-to-female to breast cancer screen\]
+In addition, the BRFSS calculated variables contain a measure of heavy
+drinking and a measure of binge drinking. Both of these measures
+classify participants based on sex and do not consider gender identity
+in classification; the threshold for heavy drinking is quite different
+for males (14 drinks per week) compared to females (7 drinks per week),
+while the binge drinking definition differs by a single drink per
+episode (5 for males, 4 for females). Given participant responses for
+sex vary within a single gender identity, these thresholds may not be
+accurately capturing heavy or binge drinking. For example, although
+Azagba et al. [@azagba2019] reported the sex distribution for each
+transgender group in the first table of their paper, they did not
+include sex as a covariate in logistic regression models computing the
+odds of binge drinking for different transgender groups compared to
+cisgender groups. Perhaps not surprising, the findings suggest that
+female-to-male transgender participants have a lower odds of binge
+drinking compared to cisgender males and male-to-female transgender
+participants had higher odds of binge drinking compared to cisgender
+females [@azagba2019]. Given the importance of understanding alcohol
+consumption in the transgender population [@gilbert2018], a way of
+classifying hazardous consumption that takes into consideration physical
+attributes rather than relying solely on sex could improve accuracy of
+this measure and thus improve the quality of research on alcohol use
+among transgender people.
 
-\[paragraph suggesting researchers pay attention\]
+There are at least two possible ways to reduce the current limitations
+on accurate population level data for transgender people. First, the
+BRFSS (and other data collection and storage tools) could build in the
+flexibility to ask all of the questions currently asked of only male sex
+or only female sex for any person who identifies as transgender. In this
+way we can ensure more accurate information about important cancer
+screenings, health conditions, and health behaviors among transgender
+people. Second, researchers including the sex variable in their work
+should pay attention to measures of gender identity if they are
+available and, if gender identity measures are not available, might
+report on this limitation given that data on reported sex for
+transgender people is likely a mixture of sex recorded at birth and
+gender identity.
+
+More flexible and accurate ways of measurement of sex and gender
+identity are also necessary to protect and improve the health of
+transgender people [@beischel2022; @Bauer2017]. Measures including
+transgender identity currently include single questions and two-step
+questions typically asking about sex at birth and gender identity
+separately, like the BRFSS 2020 administration [@measurin2022]. While
+the two-step questions provide more detailed information and is
+preferable, it is not perfect. Numerous studies suggest there are some
+drawbacks including a small number of people not identifying as
+transgender and a small number of cisgender participants responding that
+they are transgender because they do not understand the terminology
+[@measurin2022].
+
+A 2017 study [@Bauer2017] examined different ways of measuring sex and
+gender and consulted with experts to identify a set of three questions,
+"What sex were you assigned at birth, meaning on your original birth
+certificate?"; "Which best describes your current gender identity?";
+and, for those whose gender identity differs from birth sex, "What
+gender do you currently live as in your day-to-day life?"
+
+Ineffective data collection, storage, and use is a threat to the health
+of transgender people. More accurate, inclusive, and consistent
+measurement along with data systems that are more flexible for data
+collection, storage, and use are strategies that may help to address
+this problem.
 
 ### References
