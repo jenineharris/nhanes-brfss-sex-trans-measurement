@@ -253,14 +253,27 @@ along with the sex question to classify people as transgender men and
 transgender women [@tabaac2018] before analysis of the associations
 between a five category variable (cisgender men, cisgender women,
 transgender men, transgender women, and gender non-conforming) and
-several cancer screening tests including pap and PSA tests. 
+several cancer screening tests including pap and PSA tests. While both
+transgender men and transgender women were asked about mammogram,
+transgender women were not asked about pap tests and transgender men
+were not asked bout PSA. In this case, with the way these groups were
+classified by the authors, those who reported male sex but transgender
+status female-to-male would have been asked the PSA screening question
+and not the pap screening question. Likewise, those who reported female
+sex but male-to-female transgender status would have been asked the pap
+screening question but not the PSA. This strategy likely missed around
+35% of people who likely had a cervix [@gatos2018] but were not asked
+about a pap test and about 30% of people who potentially had a prostate
+but were not asked about a PSA.
 
 Similar inadequate data in medical records is exacerbating the problem.
 For example, although most transgender men still have a cervix, they are
 less likely to be screened for cervical cancer compared to their
 cisgender counterparts [@gatos2018] with one of the reasons being that
 some health systems base screening invitations on the sex listed health
-records [@connolly2020]. It is clear that our existing tools are
+records [@connolly2020]. Lack of screening for transgender people can
+lead to more cases, later diagnoses, and more severe disease
+[@Bertoncelli2022, @Yang2018]. It is clear that our existing tools are
 inadequate for collecting and using data effectively for transgender
 people.
 
