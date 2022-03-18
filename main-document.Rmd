@@ -322,7 +322,7 @@ questions typically asking about sex at birth and gender identity
 separately, like the BRFSS 2020 administration [@measurin2022]. While
 the two-step questions provide more detailed information and is
 preferable, it is not perfect. Numerous studies suggest there are some
-drawbacks including a small number of people not identifying as
+drawbacks including a small number of people who would fit the definition of transgender not identifying as
 transgender and a small number of cisgender participants responding that
 they are transgender because they do not understand the terminology
 [@measurin2022].
