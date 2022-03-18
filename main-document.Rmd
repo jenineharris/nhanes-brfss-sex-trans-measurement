@@ -57,11 +57,11 @@ Prevention collect BRFSS participant data each month over telephone. It
 is considered the world's largest health survey system, collecting data
 from over 400,000 individuals yearly [@brfss].
 
-Until 2015, BRFSS did not ask participants about gender identity. In
+Until 2014, BRFSS did not ask participants about gender identity. In
 2015 the BRFSS added an optional question about gender identity to the
 survey and states could decide whether or not to include the gender
 identity question when conducting data collection. The gender identity
-question that was included in the BRFSS from 2015 until 2020 (the most
+question that was included in the BRFSS from 2014 until 2020 (the most
 recent year of data released) was: "Do you consider yourself to be
 transgender?" The follow-up question for those who answered yes was, "Do
 you consider yourself to be 1. Male-to-female, 2. Female-to-male, or 3.
@@ -69,14 +69,14 @@ Gender nonconforming?"
 
 Although a gender identity question was added, the wording of the sex
 question did not make any distinction between sex and gender for several
-years. In 2015, the interviewer selected the sex of the participant
-given the prompt: "Indicate sex of respondent. Ask only if necessary."
-In 2016, the prompt changed to, "Are you..." with the options of Male,
-Female, and Refused and a note, "Note: This may be populated from
-information derived from screening, household enumeration. However,
-interviewer should not make judgement on sex of respondent." So, 2016
-was the first year of the BRFSS that the interviewer was not permitted
-to guess the sex of the participant.
+years. In 2014 and 2015, the interviewer selected the sex of the
+participant given the prompt: "Indicate sex of respondent. Ask only if
+necessary." In 2016, the prompt changed to, "Are you..." with the
+options of Male, Female, and Refused and a note, "Note: This may be
+populated from information derived from screening, household
+enumeration. However, interviewer should not make judgement on sex of
+respondent." So, 2016 was the first year of the BRFSS that the
+interviewer was not permitted to guess the sex of the participant.
 
 In 2017 the question remained, "Are you..." with responses of Male,
 Female, and Refused. The note for interviewers changed to all capital
@@ -130,7 +130,7 @@ specific antigen tests are only asked of people who report being in a
 specific sex category.
 
 We sought to better understand the relationship between sex and gender
-identity responses in the BRFSS data from 2015 (the first year of the
+identity responses in the BRFSS data from 2014 (the first year of the
 gender identity question) to the most recently released year of data in
 2020. Specifically we answer three questions: (1) What is the
 relationship between sex and gender identity responses for participants
@@ -142,7 +142,7 @@ identity reporting compared to other years?
 
 ### Methods
 
-We imported the BRFSS data sets from 2015 through 2020 directly from the
+We imported the BRFSS data sets from 2014 through 2020 directly from the
 Centers for Disease Control and Prevention website. We used R
 statistical software version 4.1.1 [@rstats], the RStudio (version
 1.4.1717) interactive development environment [@rstudio], and a function
@@ -164,16 +164,20 @@ male sex compared to the percentage of female-to-male transgender
 participants reporting themselves to be female.
 
 *Figure 1. Distribution of reported sex among BRFSS participants who
-reported being transgender (2015-2020).*
+reported being transgender (2014-2020).*
 
 ```{r}
-sixBars
+reposition_legend(sixBars +  
+                                     facet_wrap(.~yearLong,nrow = 2,
+                                                labeller = label_wrap_gen(20)), 
+                                   position = "bottom",
+                                   panel='panel-4-2')
 ```
 
 ##### How has the relationship between measured sex and gender identity changed as the sex question changed over this six year period?
 
 Although the sex question asked of participants changed multiple times
-from 2015 to 2020, the percentage in each transgender group choosing
+from 2014 to 2020, the percentage in each transgender group choosing
 male and female did not change notably for either group (Figure 2).
 
 ```{r}
@@ -182,20 +186,9 @@ overTime
 
 ##### Did the versions of the question that specified "at birth" result in different patterns of sex and gender identity reporting compared to other years?
 
-For the transgender male-to-female group, the 2018 and 2020 had a
-slightly different pattern of responses compared to the years just
-before these (more in line with the 2015 responses), with more
-participants selecting male sex in 2018 than in 2017 and in 2020
-compared to 2019. For the transgender female-to-male group, 2018
-question also marked a shift in responses with more participants
-choosing male sex than previous years. This small change was maintained
-in 2019 but there was a slight increase in female sex responses in 2020.
-The "at birth" wording appears to have had more of an impact on
-participants identifying as male-to-female transgender than on those
-identifying as female-to-male transgender. It is notable that, for both
-of the transgender groups (female-to-male and male-to-female) there was
-an increase in selection of male in response to the sex question in
-2018, the first year of the "at birth" wording.
+The transgender male-to-female group ranged from `r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`% to
+`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans male-to-female" & percTransTib$SEX == 'male']),0)`% male sex with no apparent pattern given the question wording changes. The transgender female-to-male group ranged from `r round(100*min(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`% to
+`r round(100*max(percTransTib$percentTranYr[percTransTib$TRNSGNDR == "Trans female-to-male" & percTransTib$SEX == 'female']),0)`% female sex with a pattern of decline in responding "female" to the sex question from 2014 to 2020. 
 
 The structure of the 2019 survey provides some additional information
 about differences in response patterns when including or not including
@@ -219,13 +212,13 @@ cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
 ### Discussion
 
 We found that about `r round(100*percTrans[1,1], 0)`% of participants in
-the 2015 to 2020 BRFSS who identify as transgender male-to-female report
+the 2014 to 2020 BRFSS who identify as transgender male-to-female report
 male sex while about `r 100-round(100*percTrans[1,1], 0)`% report female
 sex. During the same time frame, participants who identify as
 transgender female-to-male report female sex
 `r round(100*percTrans[2,2], 0)`% of the time and report male sex
 `r 100-   round(100*percTrans[2,2], 0)`% of the time. These values were
-relatively consistent over the six administrations of the survey despite
+relatively consistent over the six administrations of the survey, although did see some minor shifts in the male-to-female group and a relatively steady decline in the female-to-male group despite
 multiple changes in how sex was measured. The one exception to this was
 in the group of transgender male-to-female participants who answered the
 optional module on gender identity in 2019. When asked their sex at

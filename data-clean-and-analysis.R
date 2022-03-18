@@ -135,6 +135,7 @@ BRFSS_all_clean <- BRFSS_all %>%
   drop_na() %>% 
   droplevels()
 
+library(lemon) # reposition legend function
 sixBars <- BRFSS_all_clean %>% 
   drop_na() %>% 
   group_by(TRNSGNDR, SEX, yearLong) %>% 
@@ -144,8 +145,8 @@ sixBars <- BRFSS_all_clean %>%
   ggplot(aes(x = TRNSGNDR, fill = SEX, y = percYear)) +
   geom_col(position = "dodge") +
   #coord_flip() +
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10)) +
-  facet_wrap(~yearLong, 
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 8)) +
+  facet_wrap(~yearLong, nrow = 2,
              labeller = label_wrap_gen(20)) +
   scale_fill_manual(values = c("gray60", "black")) +
   theme_minimal() +
@@ -262,6 +263,17 @@ legend <- get_legend(
     guides(color = guide_legend(nrow = 1)) +
     theme(legend.position = "bottom"))
 
+## Get some percentages
+percTransYear <- prop.table(table(BRFSS_all_clean$TRNSGNDR, 
+                                  BRFSS_all_clean$SEX,
+                                  BRFSS_all_clean$year),
+                            margin = 1)
+
+percTransTib <- BRFSS_all_clean %>% 
+  group_by(TRNSGNDR, SEX, year) %>% 
+  count() %>% 
+  group_by(year, TRNSGNDR) %>% 
+  mutate(percentTranYr = n/sum(n))
 
 
 ######### scraps
