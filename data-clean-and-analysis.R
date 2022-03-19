@@ -273,7 +273,8 @@ percTransTib <- BRFSS_all_clean %>%
   group_by(TRNSGNDR, SEX, year) %>% 
   count() %>% 
   group_by(year, TRNSGNDR) %>% 
-  mutate(percentTranYr = n/sum(n))
+  mutate(percentTranYr = n/sum(n)) %>% 
+  filter(year %in% c('2014', '2015', '2016'))
 
 
 ######### scraps

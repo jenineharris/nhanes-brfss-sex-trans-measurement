@@ -248,57 +248,60 @@ three years of BRFSS data were used to determine colonoscopy and
 mammography screenings among transgender people but neglected to discuss
 the possible mismatch between the participant response to the sex
 variable and the types of screenings recommended. Likewise, another
-study using BRFSS data relied on the *Are you transgender?* question
-along with the sex question to classify people as transgender men and
-transgender women [@tabaac2018] before analysis of the associations
-between a five category variable (cisgender men, cisgender women,
-transgender men, transgender women, and gender non-conforming) and
-several cancer screening tests including pap and PSA tests. While both
-transgender men and transgender women were asked about mammogram,
-transgender women were not asked about pap tests and transgender men
-were not asked bout PSA. In this case, with the way these groups were
-classified by the authors, those who reported male sex but transgender
-status female-to-male would have been asked the PSA screening question
-and not the pap screening question. Likewise, those who reported female
-sex but male-to-female transgender status would have been asked the pap
-screening question but not the PSA. This strategy likely missed around
-35% of people who likely had a cervix [@gatos2018] but were not asked
-about a pap test and about 30% of people who potentially had a prostate
-but were not asked about a PSA.
+study using BRFSS data relied on the *Are you transgender?* question and
+the sex question to classify people as transgender men and transgender
+women [@tabaac2018] before analysis of the associations between a five
+category variable (cisgender men, cisgender women, transgender men,
+transgender women, and gender non-conforming) and several cancer
+screening tests including pap and PSA tests. While both transgender men
+and transgender women were asked about mammogram, transgender women were
+not asked about pap tests and transgender men were not asked bout PSA.
+In this case, with the way these groups were classified by the authors,
+those who reported male sex but transgender status female-to-male (n =
+212) would have been asked the PSA screening question and not the pap
+screening question. Likewise, those who reported female sex but
+male-to-female transgender status (n = 319) would have been asked the
+pap screening question but not the PSA. So, out of the 1,779 transgender
+male-to-female or female-to-male participants, this strategy likely
+missed 212 people who likely still had a cervix [@gatos2018] but were
+not asked about a pap test and 319 of people who potentially had a
+prostate but were not asked about a PSA.
 
-Similar inadequate data in medical records is exacerbating the problem.
-For example, although most transgender men still have a cervix, they are
-less likely to be screened for cervical cancer compared to their
-cisgender counterparts [@gatos2018] with one of the reasons being that
-some health systems base screening invitations on the sex listed health
-records [@connolly2020]. Lack of screening for transgender people can
-lead to more cases, later diagnoses, and more severe disease
-[@Bertoncelli2022, @Yang2018]. It is clear that our existing tools are
-inadequate for collecting and using data effectively for transgender
+Similar inadequate data storage in medical records is exacerbating the
+problem. For example, although most transgender men still have a cervix,
+they are less likely to be screened for cervical cancer compared to
+their cisgender counterparts [@gatos2018] with one of the reasons being
+that some health systems base screening invitations on the sex listed
+health records [@connolly2020]. Lack of screening for transgender people
+can lead to later diagnoses and more severe disease [@Bertoncelli2022,
+@Yang2018]. It is clear that our existing tools are inadequate for
+collecting, storing, and using data effectively for transgender people.
+
+In addition ineffective direct measurement of sex, the BRFSS includes
+computed variables that rely on the value of the sex variable to
+classify participants. Two of these variables are are *heavy drinking*
+and *binge drinking*. These measures classify participants as heavy
+drinkers or binge drinkers based on the number of drinks they report
+having in a week and their sex. They do not consider gender identity in
+classification; the threshold for heavy drinking is quite different for
+males (14 drinks per week) compared to females (7 drinks per week),
+while the binge drinking definition differs by a single drink per
+episode (5 for males, 4 for females). Given participant responses for
+sex vary within a single gender identity, these thresholds may not be
+accurately capturing heavy or binge drinking. In one example of how this
+impacts research, Azagba et al. [@azagba2019] did not include sex as a
+covariate in logistic regression models computing the odds of binge
+drinking for different transgender groups compared to cisgender groups.
+Perhaps not surprising, the findings suggested that female-to-male
+transgender participants have a lower odds of binge drinking compared to
+cisgender males and male-to-female transgender participants had higher
+odds of binge drinking compared to cisgender females [@azagba2019].
+Given the importance of understanding alcohol consumption in the
+transgender population [@gilbert2018], a way of classifying hazardous
+consumption that takes into consideration physical attributes rather
+than relying solely on sex could improve accuracy of this measure and
+thus improve the quality of research on alcohol use among transgender
 people.
-
-In addition ineffective direct measurement of sex, the BRFSS calculates
-variables that rely on the value of the sex variable. Two of these are
-binary variables for heavy drinking and binge drinking. Both of these
-measures classify participants based on sex and do not consider gender
-identity in classification; the threshold for heavy drinking is quite
-different for males (14 drinks per week) compared to females (7 drinks
-per week), while the binge drinking definition differs by a single drink
-per episode (5 for males, 4 for females). Given participant responses
-for sex vary within a single gender identity, these thresholds may not
-be accurately capturing heavy or binge drinking. For example, Azagba et
-al. [@azagba2019] did not include sex as a covariate in logistic
-regression models computing the odds of binge drinking for different
-transgender groups compared to cisgender groups. Perhaps not surprising,
-the findings suggested that female-to-male transgender participants have
-a lower odds of binge drinking compared to cisgender males and
-male-to-female transgender participants had higher odds of binge
-drinking compared to cisgender females [@azagba2019]. Given the
-importance of understanding alcohol consumption in the transgender
-population [@gilbert2018], a way of classifying hazardous consumption
-that takes into consideration physical attributes rather than relying
-solely on sex could improve accuracy of this measure and thus improve
-the quality of research on alcohol use among transgender people.
 
 There are at least two possible ways to reduce the current limitations
 on accurate population level data for transgender people. First, the
@@ -320,24 +323,35 @@ transgender people [@beischel2022; @Bauer2017]. Measures including
 transgender identity currently include single questions and two-step
 questions typically asking about sex at birth and gender identity
 separately, like the BRFSS 2020 administration [@measurin2022]. While
-the two-step questions provide more detailed information and is
-preferable, it is not perfect. Numerous studies suggest there are some
-drawbacks including a small number of people who would fit the definition of transgender not identifying as
-transgender and a small number of cisgender participants responding that
-they are transgender because they do not understand the terminology
-[@measurin2022].
+the two-step questions provide more detailed information and has been
+suggested by some groups as a best practice [@conron2014identifying],
+they are not perfect. Numerous studies suggest drawbacks including a
+small number of people who would fit the definition of transgender but
+who do not identify as transgender and a small number of cisgender
+participants responding that they are transgender because they do not
+understand the terminology [@measurin2022]. One study also found
+evidence that some transgender people may misunderstand trangender
+terminology, with a small number of transgender women self-identifying
+as transgender men [@Costa2022].
 
-A 2017 study [@Bauer2017] examined different ways of measuring sex and
-gender and consulted with experts to identify a set of three questions,
-"What sex were you assigned at birth, meaning on your original birth
-certificate?"; "Which best describes your current gender identity?";
-and, for those whose gender identity differs from birth sex, "What
-gender do you currently live as in your day-to-day life?"
-
-Ineffective data collection, storage, and use is a threat to the health
-of transgender people. More accurate, inclusive, and consistent
-measurement along with data systems that are more flexible for data
-collection, storage, and use are strategies that may help to address
-this problem.
+While there does not seem to be consensus yet on the best way to measure
+sex and gender, scientists from different fields continue to work on it.
+For example, a 2017 study [@Bauer2017] examined different ways of
+measuring sex and gender and consulted with experts to identify a set of
+three questions, "What sex were you assigned at birth, meaning on your
+original birth certificate?"; "Which best describes your current gender
+identity?"; and, for those whose gender identity differs from birth sex,
+"What gender do you currently live as in your day-to-day life?" In
+contrast, Thornton et al. [@thornton2022] argue that, as a step toward
+best practice for gender and sex data collection, ethical measurement
+could skip the sex question as a filter and use questions that are
+relevant to a study topic like "Do you have a prostate?" or "Are you
+breastfeeding?" Whether one of these options is the key remains to be
+seen. What is clear, though, is that ineffective data collection,
+storage, and use is a threat to the health of transgender people. More
+accurate, flexible, and inclusive measurement along with data systems
+that are more flexible for data collection, storage, and use are
+strategies that could improve the health and well-being of transgender
+people.
 
 ### References
