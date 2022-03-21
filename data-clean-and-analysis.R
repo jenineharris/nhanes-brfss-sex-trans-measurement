@@ -43,10 +43,10 @@ library(tidyverse)
 # # # select only the variables to use in the analysis (e.g. changes 300+ variables to only needed for analysis)
 # 
 # #
-BRFSS_2014 <- BRFSS_2014 %>%
-  select(SEX,  TRNSGNDR, `_LLCPWT`) %>%
-  mutate(year = "2014")
-# #
+# BRFSS_2014 <- BRFSS_2014 %>%
+#   select(SEX,  TRNSGNDR, `_LLCPWT`) %>%
+#   mutate(year = "2014")
+# # #
 # BRFSS_2015 <- BRFSS_2015 %>%
 #   select(SEX, TRNSGNDR, `_RFBING5`, `_RFDRHV5`, DIABETE3,
 #          PREGNANT, HADMAM, HOWLONG, HADPAP2, LASTPAP2, HPVTEST,
@@ -95,17 +95,17 @@ BRFSS_2014 <- BRFSS_2014 %>%
 # #
 #
 # # combine all years into 1 dataset
-BRFSS_all <- rbind(select(BRFSS_2014, SEX, TRNSGNDR, year),
-                   select(BRFSS_2015, SEX, TRNSGNDR, year),
-                   select(BRFSS_2016, SEX, TRNSGNDR, year),
-                   select(BRFSS_2017, SEX, TRNSGNDR, year),
-                   select(BRFSS_2018, SEX, TRNSGNDR, year),
-                   select(BRFSS_2019, SEX, TRNSGNDR, year),
-                   select(BRFSS_2020, SEX, TRNSGNDR, year))
+# BRFSS_all <- rbind(select(BRFSS_2014, SEX, TRNSGNDR, year),
+#                    select(BRFSS_2015, SEX, TRNSGNDR, year),
+#                    select(BRFSS_2016, SEX, TRNSGNDR, year),
+#                    select(BRFSS_2017, SEX, TRNSGNDR, year),
+#                    select(BRFSS_2018, SEX, TRNSGNDR, year),
+#                    select(BRFSS_2019, SEX, TRNSGNDR, year),
+#                    select(BRFSS_2020, SEX, TRNSGNDR, year))
 #
 # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # in instead of running all steps above
-write.csv(BRFSS_all, file = "brfss_all.csv")
+#write.csv(BRFSS_all, file = "brfss_all.csv")
 
 BRFSS_all <- read.csv("brfss_all.csv")
 # add labels
