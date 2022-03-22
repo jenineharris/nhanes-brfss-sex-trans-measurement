@@ -19,10 +19,42 @@ source("data-clean-and-analysis.R")
 
 # Abstract
 
+Background: The distinction between sex and gender identity in
+health-related research is necessary to properly assess the implications
+of gender identity on health-related outcomes. Inquiries that gather
+both sex and dimensions of gender identity, like transgender status,
+have appeared in large-scale surveys like the Behavioral Risk Factor
+Survey (BRFSS) beginning in 2014. How sex and gender identity is coded
+in BRFSS affects computed variables and question curation, potentially
+affecting outcome validity. This study explores the relationship between
+sex and gender responses in BRFSS data over six years and its dependence
+on how sex and gender are measured. \
+Methods: BRFSS datasets from 2014 to 2020 were imported into R studio
+version 1.4.1717. The data was managed and cleaned to include variables
+dependent on sex from individuals who reported transgender identity,
+including any resulting computed variables. Specific question verbiage
+of sex identity was also retained. Descriptive statistics were
+calculated.
+
+Results: The majority of individuals reported being male-to-female
+transgender indicated their sex to be male, while the majority of those
+who reported being female-to-male indicated their sex as female. There
+was no detected pattern between the proportion of transgender
+male-to-female individuals from question wording. However, their was a
+decline in "female" sex responses. (insert percentages)
+
+Conclusion: Accurate measurement for sex and gender variables in
+research is necessary to obtain appropriate risk and prevalence data
+among transgender people. Potential error between reported gender
+identity and sex demonstrates that surveys should focus on inclusive
+screening for all sex-related computed variables. Researchers should
+likewise consider the implications of including sex and gender identity
+variables on their research questions.
+
 # Background
 
 In 2021, a Gallup poll found that .6% or 60 out of every 1000 Americans,
-reported that they identify as transgender [@lgbtgallup\]. The
+reported that they identify as transgender \[@lgbtgallup\]. The
 percentage varied by age group, with the cohort born in 1997-2002
 reporting 1.8% of survey participants identified as transgender compared
 to 1.2% in the previous cohort and just .3% in the cohort born before
@@ -34,7 +66,7 @@ biological sex and sexual orientation \[@galupo2016labels;
 @tate2020undoing\]. Sex, sexual orientation, and gender identity all
 have implications for health, health care, and health outcomes
 \[@legato2016consideration; @agenor2016sexual; @gonzales2016comparison;
-@mcclure2022gender].
+@mcclure2022gender\].
 
 Conducting research to understand factors that influence health, health
 care, and health outcomes is important for creating guidelines,
@@ -48,7 +80,6 @@ guessing the sex of the participant [@bauer2017transgender] or asking
 "what is your sex?" and recording either male or female. Researchers
 have frequently treated gender as a synonym for sex
 [@krieger2003genders; @johnson2009better; @tate2013two].
-
 
 For decades there have been calls and attempts to improve the
 measurement of sex, gender identity, and sexual orientation
@@ -216,7 +247,6 @@ everyone in 2020 (Figure 3C), the distribution of responses was
 somewhere between the responses from those who responded to the sex
 question in 2019 and those who responded to the sex at birth question in
 2019.
-
 
 ```{r}
 cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
