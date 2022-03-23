@@ -3,6 +3,8 @@
 # bring in files from online BRFSS 2015 to 2018 data
 library(haven)
 library(tidyverse)
+library(cowplot)
+library(lemon)
 #
 #
 # 2014 data
@@ -91,9 +93,6 @@ BRFSS_2019 <- BRFSS_2019 %>%
 BRFSS_2019 <- BRFSS_2019 %>%
   rename(`_DRNKWEK` = `_DRNKWK1`)
 
-#
-#
-
 # combine all years into 1 dataset
 BRFSS_all <- rbind(select(BRFSS_2014, SEX, TRNSGNDR, year),
                    select(BRFSS_2015, SEX, TRNSGNDR, year),
@@ -105,11 +104,12 @@ BRFSS_all <- rbind(select(BRFSS_2014, SEX, TRNSGNDR, year),
 
 # save BRFSS_all dataset as a .csv file so every time i want to work with, I just read that file
 # in instead of running all steps above
-#write.csv(BRFSS_all, file = "brfss_all.csv")
+# write.csv(BRFSS_all, file = "brfss_all.csv")
 
 # if brfss_all file saved, comment out everything except library code above  
 # and un comment next line of code to import data
-#BRFSS_all <- read.csv("brfss_all.csv")
+# BRFSS_all <- read.csv("brfss_all.csv")
+
 # add labels
 BRFSS_all_clean <- BRFSS_all %>% 
   mutate(SEX = recode_factor(SEX, 
@@ -137,7 +137,7 @@ BRFSS_all_clean <- BRFSS_all %>%
   drop_na() %>% 
   droplevels()
 
-library(lemon) # reposition legend function
+# create figure 1
 sixBars <- BRFSS_all_clean %>% 
   drop_na() %>% 
   group_by(TRNSGNDR, SEX, yearLong) %>% 
@@ -155,6 +155,7 @@ sixBars <- BRFSS_all_clean %>%
   labs(x = "Gender identity", y = "Percent in each sex category",
        fill = "Sex category")  
 
+# create figure 2
 overTime <- BRFSS_all_clean %>% 
   drop_na() %>% 
   mutate(year = as.numeric(as.character(year))) %>% 
@@ -175,6 +176,7 @@ overTime <- BRFSS_all_clean %>%
                      breaks=c(2014,2015,2016,2017, 2018, 2019,2020)) +
   ylim(c(0,100))
 
+# re-download BRFSS 2019 for fig 3 creation
 temp <- tempfile(fileext = ".zip")
 download.file(url  = "https://www.cdc.gov/brfss/annual_data/2019/files/LLCP2019XPT.zip", destfile = temp)
 BRFSS_2019_raw <- read_xpt(file = temp)
@@ -196,11 +198,7 @@ BRFSS_2019_clean <- BRFSS_2019_raw %>%
                                   '7' = NA_character_,
                                   '9' = NA_character_))
 
-table(BRFSS_2019_clean$SEXVAR, BRFSS_2019_clean$BIRTHSEX)
-table(BRFSS_2019_clean$TRNSGNDR, BRFSS_2019_clean$BIRTHSEX)
-
-library(cowplot)
-
+# create figure 3
 sexVar <- BRFSS_2019_clean %>% 
   drop_na(TRNSGNDR, SEXVAR) %>% 
   filter(TRNSGNDR != "No" & TRNSGNDR != "Trans gender nonconforming") %>% 
@@ -278,7 +276,7 @@ percTransTib <- BRFSS_all_clean %>%
   mutate(percentTranYr = n/sum(n)) %>% 
   filter(year %in% c('2014', '2015', '2016'))
 
-# Figures
+# Format and print figures
 
 # Figure 1
 reposition_legend(sixBars +  
