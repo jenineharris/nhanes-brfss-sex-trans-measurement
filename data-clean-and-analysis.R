@@ -214,7 +214,7 @@ sexVar <- BRFSS_2019_clean %>%
   #            labeller = label_wrap_gen(20)) +
   scale_fill_manual(values = c("gray60", "black")) +
   theme_minimal() +
-  labs(x = "Gender identity", y = "Percent in each\ntransgender category (sex 2019)",
+  labs(x = "Gender identity", y = "Percent in each\ntransgender category\n(sex 2019)",
        fill = "Sex category")  +
   ylim(c(0, 100))
 
@@ -233,7 +233,7 @@ sexAtBirthVar <- BRFSS_2019_clean %>%
   #            labeller = label_wrap_gen(20)) +
   scale_fill_manual(values = c("gray60", "black")) +
   theme_minimal() +
-  labs(x = "Gender identity", y = "Percent in each\ntransgender category (sex at birth 2019)",
+  labs(x = "Gender identity", y = "Percent in each\ntransgender category\n(sex at birth 2019)",
        fill = "Sex category") +
   ylim(c(0, 100))
 
@@ -253,7 +253,7 @@ sexAtBirthVar2020 <- BRFSS_all_clean %>%
   #            labeller = label_wrap_gen(20)) +
   scale_fill_manual(values = c("gray60", "black")) +
   theme_minimal() +
-  labs(x = "Gender identity", y = "Percent in each \ntransgender category (sex at birth 2020)",
+  labs(x = "Gender identity", y = "Percent in each \ntransgender category\n(sex at birth 2020)",
        fill = "Sex category") +
   ylim(c(0, 100))
 
