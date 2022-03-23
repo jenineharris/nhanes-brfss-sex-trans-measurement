@@ -276,6 +276,26 @@ percTransTib <- BRFSS_all_clean %>%
   mutate(percentTranYr = n/sum(n)) %>% 
   filter(year %in% c('2014', '2015', '2016'))
 
+# Figures
+
+# Figure 1
+reposition_legend(sixBars +  
+                    facet_wrap(.~yearLong,nrow = 2,
+                               labeller = label_wrap_gen(20)), 
+                  position = "bottom",
+                  panel='panel-4-2')
+
+# Figure 2
+overTime
+
+# Figure 3
+cowplot::plot_grid(plot_grid(sexVar + theme(legend.position = "none"),
+                             sexAtBirthVar + theme(legend.position = "none"),
+                             sexAtBirthVar2020 + theme(legend.position = "none"), nrow = 1,
+                             labels = c("a", "b", "c")),
+                   legend, ncol = 1, rel_heights = c(1,.1))
+
+
 
 ######### scraps
 
